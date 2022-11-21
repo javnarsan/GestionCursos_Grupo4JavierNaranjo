@@ -8,7 +8,6 @@ public class GestionCursosApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GestionCursosApplication.class, args);
-		//joefj
 	}
 
 }
