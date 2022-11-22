@@ -13,6 +13,19 @@ public class Matricula {
 	private int ddAlumno;
 	private int idCurso;
 	private int valoraciones;
+	
+	
+	public Matricula() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Matricula(int id, int ddAlumno, int idCurso, int valoraciones) {
+		super();
+		this.id = id;
+		this.ddAlumno = ddAlumno;
+		this.idCurso = idCurso;
+		this.valoraciones = valoraciones;
+	}
 	public int getId() {
 		return id;
 	}

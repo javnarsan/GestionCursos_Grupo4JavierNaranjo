@@ -17,6 +17,22 @@ public class Profesor {
 	private String email;
 	private String usuario;
 	private String password;
+	
+	public Profesor() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Profesor(int id, String nombre, String apellido, String email, String usuario, String password) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.usuario = usuario;
+		this.password = password;
+	}
+
 	public int getId() {
 		return id;
 	}

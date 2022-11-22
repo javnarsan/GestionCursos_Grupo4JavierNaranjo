@@ -14,6 +14,21 @@ public class Noticia {
 	private String descripcion;
 	private String imagen;
 	private int IdAdministrador;
+	
+	public Noticia() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Noticia(int id, String titulo, String descripcion, String imagen, int idAdministrador) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.imagen = imagen;
+		IdAdministrador = idAdministrador;
+	}
+
 	public int getId() {
 		return id;
 	}
