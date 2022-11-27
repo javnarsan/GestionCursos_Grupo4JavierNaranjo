@@ -15,5 +15,12 @@ public class HomeController {
 		model.addAttribute("titulo",titulo);
 		return "index.html";
 	}
+	
+	@GetMapping("/registro")
+	public String registro(Model model) {
+		String titulo="registro";
+		model.addAttribute("titulo",titulo);
+		return "registro.html";
+	}
 
 }
