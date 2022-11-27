@@ -1,26 +1,17 @@
-package com.example.demo.entities;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class Noticia {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+package com.example.demo.models;
+public class NoticiaModel {
 	private int id;
 	private String titulo;
 	private String descripcion;
 	private String imagen;
 	private int IdAdministrador;
 	
-	public Noticia() {
+	public NoticiaModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Noticia(int id, String titulo, String descripcion, String imagen, int idAdministrador) {
+	public NoticiaModel(int id, String titulo, String descripcion, String imagen, int idAdministrador) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -61,7 +52,7 @@ public class Noticia {
 	}
 	@Override
 	public String toString() {
-		return "Noticia [id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", imagen=" + imagen
+		return "NoticiaModel [id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", imagen=" + imagen
 				+ ", IdAdministrador=" + IdAdministrador + "]";
 	}
 	

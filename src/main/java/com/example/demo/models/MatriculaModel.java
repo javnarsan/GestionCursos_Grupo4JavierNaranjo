@@ -1,32 +1,28 @@
-package com.example.demo.entities;
+package com.example.demo.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
-public class Matricula {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+public class MatriculaModel {
 	private int id;
 	private int ddAlumno;
 	private int idCurso;
 	private int valoraciones;
-	
-	public Matricula() {
+	public MatriculaModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Matricula(int id, int ddAlumno, int idCurso, int valoraciones) {
+	public MatriculaModel(int id, int ddAlumno, int idCurso, int valoraciones) {
 		super();
 		this.id = id;
 		this.ddAlumno = ddAlumno;
 		this.idCurso = idCurso;
 		this.valoraciones = valoraciones;
 	}
-
 	public int getId() {
 		return id;
 	}
@@ -53,7 +49,7 @@ public class Matricula {
 	}
 	@Override
 	public String toString() {
-		return "Matricula [id=" + id + ", ddAlumno=" + ddAlumno + ", idCurso=" + idCurso + ", valoraciones="
+		return "MatriculaModel [id=" + id + ", ddAlumno=" + ddAlumno + ", idCurso=" + idCurso + ", valoraciones="
 				+ valoraciones + "]";
 	}
 	

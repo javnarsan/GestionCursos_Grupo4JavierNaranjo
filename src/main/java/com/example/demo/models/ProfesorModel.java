@@ -1,29 +1,18 @@
-package com.example.demo.entities;
+package com.example.demo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import org.springframework.web.bind.annotation.GetMapping;
-
-@Entity
-public class Profesor {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProfesorModel {
 	private int id;
 	private String nombre;
 	private String apellido;
 	private String email;
 	private String usuario;
 	private String password;
-	
-	public Profesor() {
+	public ProfesorModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Profesor(int id, String nombre, String apellido, String email, String usuario, String password) {
+	public ProfesorModel(int id, String nombre, String apellido, String email, String usuario, String password) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -32,7 +21,6 @@ public class Profesor {
 		this.usuario = usuario;
 		this.password = password;
 	}
-
 	public int getId() {
 		return id;
 	}
@@ -71,7 +59,7 @@ public class Profesor {
 	}
 	@Override
 	public String toString() {
-		return "Profesor [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
+		return "ProfesorModel [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
 				+ ", usuario=" + usuario + ", password=" + password + "]";
 	}
 	
