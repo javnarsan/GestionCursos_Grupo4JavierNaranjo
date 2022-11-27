@@ -23,7 +23,7 @@ public class ComentarioConverter {
 		comentario.setIdCurso(comentarioModel.getIdCurso());
 		comentario.setComentario(comentarioModel.getComentario());
 		return comentario;
-		
+		//comentario
 	}
 
 }
