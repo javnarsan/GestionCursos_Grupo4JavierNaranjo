@@ -1,27 +1,45 @@
 package com.example.demo.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.example.demo.entities.Comentario;
+import com.example.demo.entities.Matricula;
+import com.example.demo.entities.Profesor;
+
 public class CursoModel {
 	private int idAdministrador;
 	private String nombre;
 	private String descripcion;
 	private int nivel;
-	private int idProfesor;
+	private Profesor profesor;
 	private String fechaInicio;
 	private String fechaFin;
+	private List<Comentario> comentarios;
+	private List<Matricula> matriculas;
 	public CursoModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CursoModel(int idAdministrador, String nombre, String descripcion, int nivel, int idProfesor, String fechaInicio,
-			String fechaFin) {
+	public CursoModel(int idAdministrador, String nombre, String descripcion, int nivel, Profesor profesor,
+			String fechaInicio, String fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
 		super();
 		this.idAdministrador = idAdministrador;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.nivel = nivel;
-		this.idProfesor = idProfesor;
+		this.profesor = profesor;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
+		this.comentarios = comentarios;
+		this.matriculas = matriculas;
 	}
 	public int getIdAdministrador() {
 		return idAdministrador;
@@ -47,11 +65,11 @@ public class CursoModel {
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
-	public int getIdProfesor() {
-		return idProfesor;
+	public Profesor getProfesor() {
+		return profesor;
 	}
-	public void setIdProfesor(int idProfesor) {
-		this.idProfesor = idProfesor;
+	public void setProfesor(Profesor profesor) {
+		this.profesor = profesor;
 	}
 	public String getFechaInicio() {
 		return fechaInicio;
@@ -65,11 +83,23 @@ public class CursoModel {
 	public void setFechaFin(String fechaFin) {
 		this.fechaFin = fechaFin;
 	}
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+	public List<Matricula> getMatriculas() {
+		return matriculas;
+	}
+	public void setMatriculas(List<Matricula> matriculas) {
+		this.matriculas = matriculas;
+	}
 	@Override
 	public String toString() {
 		return "CursoModel [idAdministrador=" + idAdministrador + ", nombre=" + nombre + ", descripcion=" + descripcion
-				+ ", nivel=" + nivel + ", idProfesor=" + idProfesor + ", fechaInicio=" + fechaInicio + ", fechaFin="
-				+ fechaFin + "]";
+				+ ", nivel=" + nivel + ", profesor=" + profesor + ", fechaInicio=" + fechaInicio + ", fechaFin="
+				+ fechaFin + ", comentarios=" + comentarios + ", matriculas=" + matriculas + "]";
 	}
 	
 	

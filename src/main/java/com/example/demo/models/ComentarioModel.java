@@ -1,19 +1,28 @@
 package com.example.demo.models;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.example.demo.entities.Alumno;
+import com.example.demo.entities.Curso;
+
 public class ComentarioModel {
 	private int idComentario;
-	private int idAlumno;
-	private int idCurso;
+	private Alumno alumno;
+	private Curso curso;
 	private String comentario;
 	public ComentarioModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ComentarioModel(int idComentario, int idAlumno, int idCurso, String comentario) {
+	public ComentarioModel(int idComentario, Alumno alumno, Curso curso, String comentario) {
 		super();
 		this.idComentario = idComentario;
-		this.idAlumno = idAlumno;
-		this.idCurso = idCurso;
+		this.alumno = alumno;
+		this.curso = curso;
 		this.comentario = comentario;
 	}
 	public int getIdComentario() {
@@ -22,17 +31,17 @@ public class ComentarioModel {
 	public void setIdComentario(int idComentario) {
 		this.idComentario = idComentario;
 	}
-	public int getIdAlumno() {
-		return idAlumno;
+	public Alumno getAlumno() {
+		return alumno;
 	}
-	public void setIdAlumno(int idAlumno) {
-		this.idAlumno = idAlumno;
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
 	}
-	public int getIdCurso() {
-		return idCurso;
+	public Curso getCurso() {
+		return curso;
 	}
-	public void setIdCurso(int idCurso) {
-		this.idCurso = idCurso;
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
 	public String getComentario() {
 		return comentario;
@@ -42,8 +51,9 @@ public class ComentarioModel {
 	}
 	@Override
 	public String toString() {
-		return "ComentarioModel [idComentario=" + idComentario + ", idAlumno=" + idAlumno + ", idCurso=" + idCurso
+		return "ComentarioModel [idComentario=" + idComentario + ", alumno=" + alumno + ", curso=" + curso
 				+ ", comentario=" + comentario + "]";
 	}
+	
 	
 }

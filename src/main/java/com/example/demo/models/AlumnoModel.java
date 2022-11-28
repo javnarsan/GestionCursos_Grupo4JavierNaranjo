@@ -1,5 +1,16 @@
 package com.example.demo.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.example.demo.entities.Comentario;
+import com.example.demo.entities.Matricula;
+
 public class AlumnoModel {
 	private int idAlumno;
 	private String nombre;
@@ -8,12 +19,14 @@ public class AlumnoModel {
 	private String usuario;
 	private String password;
 	private String foto;
+	private List<Comentario> comentarios;
+	private List<Matricula> matriculas;
 	public AlumnoModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public AlumnoModel(int idAlumno, String nombre, String apellidos, String email, String usuario, String password,
-			String foto) {
+			String foto, List<Comentario> comentarios, List<Matricula> matriculas) {
 		super();
 		this.idAlumno = idAlumno;
 		this.nombre = nombre;
@@ -22,6 +35,8 @@ public class AlumnoModel {
 		this.usuario = usuario;
 		this.password = password;
 		this.foto = foto;
+		this.comentarios = comentarios;
+		this.matriculas = matriculas;
 	}
 	public int getIdAlumno() {
 		return idAlumno;
@@ -65,9 +80,23 @@ public class AlumnoModel {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+	public List<Matricula> getMatriculas() {
+		return matriculas;
+	}
+	public void setMatriculas(List<Matricula> matriculas) {
+		this.matriculas = matriculas;
+	}
 	@Override
 	public String toString() {
-		return "AlumnoModel [idAlumno=" + idAlumno + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
-				+ ", usuario=" + usuario + ", password=" + password + ", foto=" + foto + "]";
+		return "AlumnoModel [idAlumno=" + idAlumno + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email="
+				+ email + ", usuario=" + usuario + ", password=" + password + ", foto=" + foto + ", comentarios="
+				+ comentarios + ", matriculas=" + matriculas + "]";
 	}
+	
 }
