@@ -19,37 +19,34 @@ public class Matricula {
 	@JoinColumn(name="cursoMatId")
 	private Curso cursoMat;
 	private int valoraciones;
-	
 	public Matricula() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Matricula(int id, Alumno ddAlumno, Curso idCurso, int valoraciones) {
+	public Matricula(int id, Alumno alumnoMat, Curso cursoMat, int valoraciones) {
 		super();
 		this.id = id;
-		this.alumnoMat = ddAlumno;
-		this.cursoMat = idCurso;
+		this.alumnoMat = alumnoMat;
+		this.cursoMat = cursoMat;
 		this.valoraciones = valoraciones;
 	}
-
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Alumno getDdAlumno() {
+	public Alumno getAlumnoMat() {
 		return alumnoMat;
 	}
-	public void setDdAlumno(Alumno ddAlumno) {
-		this.alumnoMat = ddAlumno;
+	public void setAlumnoMat(Alumno alumnoMat) {
+		this.alumnoMat = alumnoMat;
 	}
-	public Curso getIdCurso() {
+	public Curso getCursoMat() {
 		return cursoMat;
 	}
-	public void setIdCurso(Curso idCurso) {
-		this.cursoMat = idCurso;
+	public void setCursoMat(Curso cursoMat) {
+		this.cursoMat = cursoMat;
 	}
 	public int getValoraciones() {
 		return valoraciones;
@@ -59,7 +56,7 @@ public class Matricula {
 	}
 	@Override
 	public String toString() {
-		return "Matricula [id=" + id + ", ddAlumno=" + alumnoMat + ", idCurso=" + cursoMat + ", valoraciones="
+		return "Matricula [id=" + id + ", alumnoMat=" + alumnoMat + ", cursoMat=" + cursoMat + ", valoraciones="
 				+ valoraciones + "]";
 	}
 	

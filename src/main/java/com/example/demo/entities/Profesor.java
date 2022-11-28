@@ -28,8 +28,9 @@ public class Profesor {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Profesor(int id, String nombre, String apellido, String email, String usuario, String password) {
+
+	public Profesor(int id, String nombre, String apellido, String email, String usuario, String password,
+			List<Curso> cursosProf) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -37,48 +38,69 @@ public class Profesor {
 		this.email = email;
 		this.usuario = usuario;
 		this.password = password;
+		this.cursosProf = cursosProf;
 	}
 
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getApellido() {
 		return apellido;
 	}
+
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getUsuario() {
 		return usuario;
 	}
+
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public List<Curso> getCursosProf() {
+		return cursosProf;
+	}
+
+	public void setCursosProf(List<Curso> cursosProf) {
+		this.cursosProf = cursosProf;
+	}
+
 	@Override
 	public String toString() {
 		return "Profesor [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
-				+ ", usuario=" + usuario + ", password=" + password + "]";
+				+ ", usuario=" + usuario + ", password=" + password + ", cursosProf=" + cursosProf + "]";
 	}
 	
 }
