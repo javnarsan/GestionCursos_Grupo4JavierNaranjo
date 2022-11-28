@@ -32,16 +32,18 @@ public class Curso {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Curso(int idAdministrador, String nombre, String descripcion, int nivel, Profesor idProfesor, String fechaInicio,
-			String fechaFin) {
+	public Curso(int idAdministrador, String nombre, String descripcion, int nivel, Profesor profesor,
+			String fechaInicio, String fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
 		super();
 		this.idAdministrador = idAdministrador;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.nivel = nivel;
-		this.profesor = idProfesor;
+		this.profesor = profesor;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
+		this.comentarios = comentarios;
+		this.matriculas = matriculas;
 	}
 	public int getIdAdministrador() {
 		return idAdministrador;
@@ -67,11 +69,11 @@ public class Curso {
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
-	public Profesor getIdProfesor() {
+	public Profesor getProfesor() {
 		return profesor;
 	}
-	public void setIdProfesor(Profesor idProfesor) {
-		this.profesor = idProfesor;
+	public void setProfesor(Profesor profesor) {
+		this.profesor = profesor;
 	}
 	public String getFechaInicio() {
 		return fechaInicio;
@@ -85,11 +87,23 @@ public class Curso {
 	public void setFechaFin(String fechaFin) {
 		this.fechaFin = fechaFin;
 	}
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+	public List<Matricula> getMatriculas() {
+		return matriculas;
+	}
+	public void setMatriculas(List<Matricula> matriculas) {
+		this.matriculas = matriculas;
+	}
 	@Override
 	public String toString() {
 		return "Curso [idAdministrador=" + idAdministrador + ", nombre=" + nombre + ", descripcion=" + descripcion
-				+ ", nivel=" + nivel + ", idProfesor=" + profesor + ", fechaInicio=" + fechaInicio + ", fechaFin="
-				+ fechaFin + "]";
+				+ ", nivel=" + nivel + ", profesor=" + profesor + ", fechaInicio=" + fechaInicio + ", fechaFin="
+				+ fechaFin + ", comentarios=" + comentarios + ", matriculas=" + matriculas + "]";
 	}
 	
 	

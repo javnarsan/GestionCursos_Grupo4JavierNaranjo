@@ -23,11 +23,11 @@ public class Comentario {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Comentario(int idComentario, Alumno idAlumno, Curso idCurso, String comentario) {
+	public Comentario(int idComentario, Alumno alumno, Curso curso, String comentario) {
 		super();
 		this.idComentario = idComentario;
-		this.alumno = idAlumno;
-		this.curso = idCurso;
+		this.alumno = alumno;
+		this.curso = curso;
 		this.comentario = comentario;
 	}
 	public int getIdComentario() {
@@ -36,17 +36,17 @@ public class Comentario {
 	public void setIdComentario(int idComentario) {
 		this.idComentario = idComentario;
 	}
-	public Alumno getIdAlumno() {
+	public Alumno getAlumno() {
 		return alumno;
 	}
-	public void setIdAlumno(Alumno idAlumno) {
-		this.alumno = idAlumno;
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
 	}
-	public Curso getIdCurso() {
+	public Curso getCurso() {
 		return curso;
 	}
-	public void setIdCurso(Curso idCurso) {
-		this.curso = idCurso;
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
 	public String getComentario() {
 		return comentario;
@@ -56,8 +56,8 @@ public class Comentario {
 	}
 	@Override
 	public String toString() {
-		return "Comentario [idComentario=" + idComentario + ", idAlumno=" + alumno + ", idCurso=" + curso
-				+ ", comentario=" + comentario + "]";
+		return "Comentario [idComentario=" + idComentario + ", alumno=" + alumno + ", curso=" + curso + ", comentario="
+				+ comentario + "]";
 	}
 	
 }

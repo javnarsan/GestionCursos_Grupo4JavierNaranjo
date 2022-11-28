@@ -22,11 +22,12 @@ public class Administrador {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Administrador(int idAdministrador, String usuario, String password) {
+	public Administrador(int idAdministrador, String usuario, String password, List<Noticia> noticias) {
 		super();
 		this.idAdministrador = idAdministrador;
 		this.usuario = usuario;
 		this.password = password;
+		this.noticias = noticias;
 	}
 	public int getIdAdministrador() {
 		return idAdministrador;
@@ -46,10 +47,16 @@ public class Administrador {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public List<Noticia> getNoticias() {
+		return noticias;
+	}
+	public void setNoticias(List<Noticia> noticias) {
+		this.noticias = noticias;
+	}
 	@Override
 	public String toString() {
 		return "Administrador [idAdministrador=" + idAdministrador + ", usuario=" + usuario + ", password=" + password
-				+ "]";
+				+ ", noticias=" + noticias + "]";
 	}
 	
 }

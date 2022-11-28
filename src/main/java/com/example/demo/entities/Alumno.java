@@ -28,7 +28,7 @@ public class Alumno {
 		// TODO Auto-generated constructor stub
 	}
 	public Alumno(int idAlumno, String nombre, String apellidos, String email, String usuario, String password,
-			String foto) {
+			String foto, List<Comentario> comentarios, List<Matricula> matriculas) {
 		super();
 		this.idAlumno = idAlumno;
 		this.nombre = nombre;
@@ -37,6 +37,8 @@ public class Alumno {
 		this.usuario = usuario;
 		this.password = password;
 		this.foto = foto;
+		this.comentarios = comentarios;
+		this.matriculas = matriculas;
 	}
 	public int getIdAlumno() {
 		return idAlumno;
@@ -80,10 +82,23 @@ public class Alumno {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+	public List<Matricula> getMatriculas() {
+		return matriculas;
+	}
+	public void setMatriculas(List<Matricula> matriculas) {
+		this.matriculas = matriculas;
+	}
 	@Override
 	public String toString() {
 		return "Alumno [idAlumno=" + idAlumno + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
-				+ ", usuario=" + usuario + ", password=" + password + ", foto=" + foto + "]";
+				+ ", usuario=" + usuario + ", password=" + password + ", foto=" + foto + ", comentarios=" + comentarios
+				+ ", matriculas=" + matriculas + "]";
 	}
 	
 }
