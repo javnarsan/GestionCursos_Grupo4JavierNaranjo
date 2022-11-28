@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -17,7 +19,9 @@ public class Curso {
 	private String nombre;
 	private String descripcion;
 	private int nivel;
-	private int idProfesor;
+	@ManyToOne
+	@JoinColumn(name="profesorId")
+	private Profesor profesor;
 	private String fechaInicio;
 	private String fechaFin;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "curso")
@@ -28,14 +32,14 @@ public class Curso {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Curso(int idAdministrador, String nombre, String descripcion, int nivel, int idProfesor, String fechaInicio,
+	public Curso(int idAdministrador, String nombre, String descripcion, int nivel, Profesor idProfesor, String fechaInicio,
 			String fechaFin) {
 		super();
 		this.idAdministrador = idAdministrador;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.nivel = nivel;
-		this.idProfesor = idProfesor;
+		this.profesor = idProfesor;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 	}
@@ -63,11 +67,11 @@ public class Curso {
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
-	public int getIdProfesor() {
-		return idProfesor;
+	public Profesor getIdProfesor() {
+		return profesor;
 	}
-	public void setIdProfesor(int idProfesor) {
-		this.idProfesor = idProfesor;
+	public void setIdProfesor(Profesor idProfesor) {
+		this.profesor = idProfesor;
 	}
 	public String getFechaInicio() {
 		return fechaInicio;
@@ -84,7 +88,7 @@ public class Curso {
 	@Override
 	public String toString() {
 		return "Curso [idAdministrador=" + idAdministrador + ", nombre=" + nombre + ", descripcion=" + descripcion
-				+ ", nivel=" + nivel + ", idProfesor=" + idProfesor + ", fechaInicio=" + fechaInicio + ", fechaFin="
+				+ ", nivel=" + nivel + ", idProfesor=" + profesor + ", fechaInicio=" + fechaInicio + ", fechaFin="
 				+ fechaFin + "]";
 	}
 	

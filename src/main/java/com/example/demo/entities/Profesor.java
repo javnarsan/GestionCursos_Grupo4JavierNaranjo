@@ -1,9 +1,13 @@
 package com.example.demo.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -17,6 +21,8 @@ public class Profesor {
 	private String email;
 	private String usuario;
 	private String password;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "profesor")
+	private List<Curso> cursosProf;
 	
 	public Profesor() {
 		super();
