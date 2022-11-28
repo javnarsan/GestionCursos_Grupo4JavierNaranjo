@@ -17,6 +17,7 @@ public class ProfesorConverter {
 		profesorModel.setEmail(profesor.getEmail());
 		profesorModel.setPassword(profesor.getPassword());
 		profesorModel.setUsuario(profesor.getUsuario());
+		profesorModel.setCursosProf(profesor.getCursosProf());
 		return profesorModel;
 	}
 	public Profesor model2entity(ProfesorModel profesorModel) {
@@ -27,6 +28,7 @@ public class ProfesorConverter {
 		profesor.setEmail(profesorModel.getEmail());
 		profesor.setPassword(profesorModel.getPassword());
 		profesor.setUsuario(profesorModel.getUsuario());
+		profesor.setCursosProf(profesorModel.getCursosProf());
 		return profesor;
 		
 	}

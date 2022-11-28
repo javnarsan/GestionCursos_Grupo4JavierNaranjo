@@ -11,16 +11,16 @@ public class MatriculaConverter {
 	public MatriculaModel entity2model(Matricula matricula) {
 		MatriculaModel matriculaModel=new MatriculaModel();
 		matriculaModel.setId(matricula.getId());
-		//matriculaModel.setDdAlumno(matricula.getDdAlumno());
-		//matriculaModel.setIdCurso(matricula.getIdCurso());
+		matriculaModel.setAlumnoMat(matricula.getAlumnoMat());
+		matriculaModel.setCursoMat(matricula.getCursoMat());
 		matriculaModel.setValoraciones(matricula.getValoraciones());
 		return matriculaModel;
 	}
 	public Matricula model2entity(MatriculaModel matriculaModel) {
 		Matricula matricula=new Matricula();
 		matricula.setId(matriculaModel.getId());
-		//matricula.setDdAlumno(matriculaModel.getDdAlumno());
-		//matricula.setIdCurso(matriculaModel.getIdCurso());
+		matricula.setAlumnoMat(matriculaModel.getAlumnoMat());
+		matricula.setCursoMat(matriculaModel.getCursoMat());
 		matricula.setValoraciones(matriculaModel.getValoraciones());
 		return matricula;
 		
