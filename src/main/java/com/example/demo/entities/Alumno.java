@@ -1,9 +1,13 @@
 package com.example.demo.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 @Entity
 public class Alumno {
 	@Id
@@ -15,6 +19,8 @@ public class Alumno {
 	private String usuario;
 	private String password;
 	private String foto;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "alumno")
+	private List<Comentario> comentarios;
 	public Alumno() {
 		super();
 		// TODO Auto-generated constructor stub
