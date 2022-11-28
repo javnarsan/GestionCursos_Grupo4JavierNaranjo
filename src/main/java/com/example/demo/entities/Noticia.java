@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Noticia {
@@ -13,20 +15,22 @@ public class Noticia {
 	private String titulo;
 	private String descripcion;
 	private String imagen;
-	private int IdAdministrador;
+	@ManyToOne
+	@JoinColumn(name="administradorId")
+	private Administrador administrador;
 	
 	public Noticia() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Noticia(int id, String titulo, String descripcion, String imagen, int idAdministrador) {
+	public Noticia(int id, String titulo, String descripcion, String imagen, Administrador idAdministrador) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
-		IdAdministrador = idAdministrador;
+		administrador = idAdministrador;
 	}
 
 	public int getId() {
@@ -53,16 +57,16 @@ public class Noticia {
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
-	public int getIdAdministrador() {
-		return IdAdministrador;
+	public Administrador getIdAdministrador() {
+		return administrador;
 	}
-	public void setIdAdministrador(int idAdministrador) {
-		IdAdministrador = idAdministrador;
+	public void setIdAdministrador(Administrador idAdministrador) {
+		administrador = idAdministrador;
 	}
 	@Override
 	public String toString() {
 		return "Noticia [id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", imagen=" + imagen
-				+ ", IdAdministrador=" + IdAdministrador + "]";
+				+ ", IdAdministrador=" + administrador + "]";
 	}
 	
 }
