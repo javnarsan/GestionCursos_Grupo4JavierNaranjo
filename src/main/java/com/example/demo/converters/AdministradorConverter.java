@@ -14,6 +14,7 @@ public class AdministradorConverter {
 		adminModel.setIdAdministrador(admin.getIdAdministrador());
 		adminModel.setUsuario(admin.getUsuario());
 		adminModel.setPassword(admin.getPassword());
+		adminModel.setNoticias(admin.getNoticias());
 		return adminModel;
 	}
 	public Administrador model2entity(AdministradorModel adminModel) {
@@ -21,6 +22,7 @@ public class AdministradorConverter {
 		admin.setIdAdministrador(adminModel.getIdAdministrador());
 		admin.setUsuario(adminModel.getUsuario());
 		admin.setPassword(adminModel.getPassword());
+		admin.setNoticias(adminModel.getNoticias());
 		return admin;
 		
 	}

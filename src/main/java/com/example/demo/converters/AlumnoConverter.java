@@ -18,6 +18,8 @@ public class AlumnoConverter {
 		alumnoModel.setUsuario(alumno.getUsuario());
 		alumnoModel.setPassword(alumno.getPassword());
 		alumnoModel.setFoto(alumno.getFoto());
+		alumnoModel.setComentarios(alumno.getComentarios());
+		alumnoModel.setMatriculas(alumno.getMatriculas());
 		return alumnoModel;
 	}
 	public Alumno model2entity(AlumnoModel alumnoModel) {
@@ -29,6 +31,8 @@ public class AlumnoConverter {
 		alumno.setUsuario(alumnoModel.getUsuario());
 		alumno.setPassword(alumnoModel.getPassword());
 		alumno.setFoto(alumnoModel.getFoto());
+		alumno.setMatriculas(alumnoModel.getMatriculas());
+		alumno.setComentarios(alumnoModel.getComentarios());
 		return alumno;
 		
 	}
