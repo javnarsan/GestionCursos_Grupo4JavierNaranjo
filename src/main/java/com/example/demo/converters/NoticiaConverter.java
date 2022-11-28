@@ -13,7 +13,7 @@ public class NoticiaConverter {
 		noticiaModel.setTitulo(noticia.getTitulo());
 		noticiaModel.setDescripcion(noticia.getDescripcion());
 		noticiaModel.setImagen(noticia.getImagen());
-		noticiaModel.setIdAdministrador(noticia.getIdAdministrador());
+		//noticiaModel.setIdAdministrador(noticia.getIdAdministrador());
 		return noticiaModel;
 	}
 	public Noticia model2entity(NoticiaModel noticiaModel) {
@@ -22,7 +22,7 @@ public class NoticiaConverter {
 		noticia.setTitulo(noticiaModel.getTitulo());
 		noticia.setDescripcion(noticiaModel.getDescripcion());
 		noticia.setImagen(noticiaModel.getImagen());
-		noticia.setIdAdministrador(noticiaModel.getIdAdministrador());
+		//noticia.setIdAdministrador(noticiaModel.getIdAdministrador());
 		return noticia;
 		
 	}

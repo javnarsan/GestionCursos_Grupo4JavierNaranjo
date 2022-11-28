@@ -14,7 +14,7 @@ public class CursoConverter {
 		cursoModel.setIdAdministrador(curso.getIdAdministrador());
 		cursoModel.setNombre(curso.getNombre());
 		cursoModel.setDescripcion(curso.getDescripcion());
-		cursoModel.setIdProfesor(curso.getIdProfesor());
+		//cursoModel.setIdProfesor(curso.getIdProfesor());
 		cursoModel.setFechaInicio(curso.getFechaInicio());
 		cursoModel.setFechaFin(curso.getFechaFin());
 		cursoModel.setNivel(curso.getNivel());
@@ -25,7 +25,7 @@ public class CursoConverter {
 		curso.setIdAdministrador(cursoModel.getIdAdministrador());
 		curso.setNombre(cursoModel.getNombre());
 		curso.setDescripcion(cursoModel.getDescripcion());
-		curso.setIdProfesor(cursoModel.getIdProfesor());
+		//curso.setIdProfesor(cursoModel.getIdProfesor());
 		curso.setFechaInicio(cursoModel.getFechaInicio());
 		curso.setFechaFin(cursoModel.getFechaFin());
 		curso.setNivel(cursoModel.getNivel());
