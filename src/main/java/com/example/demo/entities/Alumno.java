@@ -21,6 +21,8 @@ public class Alumno {
 	private String foto;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "alumno")
 	private List<Comentario> comentarios;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "alumnoMat")
+	private List<Matricula> matriculas;
 	public Alumno() {
 		super();
 		// TODO Auto-generated constructor stub

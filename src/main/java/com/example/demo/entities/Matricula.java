@@ -4,14 +4,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Matricula {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int ddAlumno;
-	private int idCurso;
+	@ManyToOne
+	@JoinColumn(name="alumnoMatId")
+	private Alumno alumnoMat;
+	@ManyToOne
+	@JoinColumn(name="cursoMatId")
+	private Curso cursoMat;
 	private int valoraciones;
 	
 	public Matricula() {
@@ -19,11 +25,11 @@ public class Matricula {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Matricula(int id, int ddAlumno, int idCurso, int valoraciones) {
+	public Matricula(int id, Alumno ddAlumno, Curso idCurso, int valoraciones) {
 		super();
 		this.id = id;
-		this.ddAlumno = ddAlumno;
-		this.idCurso = idCurso;
+		this.alumnoMat = ddAlumno;
+		this.cursoMat = idCurso;
 		this.valoraciones = valoraciones;
 	}
 
@@ -33,17 +39,17 @@ public class Matricula {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getDdAlumno() {
-		return ddAlumno;
+	public Alumno getDdAlumno() {
+		return alumnoMat;
 	}
-	public void setDdAlumno(int ddAlumno) {
-		this.ddAlumno = ddAlumno;
+	public void setDdAlumno(Alumno ddAlumno) {
+		this.alumnoMat = ddAlumno;
 	}
-	public int getIdCurso() {
-		return idCurso;
+	public Curso getIdCurso() {
+		return cursoMat;
 	}
-	public void setIdCurso(int idCurso) {
-		this.idCurso = idCurso;
+	public void setIdCurso(Curso idCurso) {
+		this.cursoMat = idCurso;
 	}
 	public int getValoraciones() {
 		return valoraciones;
@@ -53,7 +59,7 @@ public class Matricula {
 	}
 	@Override
 	public String toString() {
-		return "Matricula [id=" + id + ", ddAlumno=" + ddAlumno + ", idCurso=" + idCurso + ", valoraciones="
+		return "Matricula [id=" + id + ", ddAlumno=" + alumnoMat + ", idCurso=" + cursoMat + ", valoraciones="
 				+ valoraciones + "]";
 	}
 	

@@ -22,6 +22,8 @@ public class Curso {
 	private String fechaFin;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "curso")
 	private List<Comentario> comentarios;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "cursoMat")
+	private List<Matricula> matriculas;
 	public Curso() {
 		super();
 		// TODO Auto-generated constructor stub
