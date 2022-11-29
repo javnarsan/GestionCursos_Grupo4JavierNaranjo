@@ -16,17 +16,19 @@ public class Administrador {
 	private int idAdministrador;
 	private String usuario;	
 	private String password;
+	private String rol;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "administrador")
 	private List<Noticia> noticias;
 	public Administrador() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Administrador(int idAdministrador, String usuario, String password, List<Noticia> noticias) {
+	public Administrador(int idAdministrador, String usuario, String password, String rol, List<Noticia> noticias) {
 		super();
 		this.idAdministrador = idAdministrador;
 		this.usuario = usuario;
 		this.password = password;
+		this.rol = rol;
 		this.noticias = noticias;
 	}
 	public int getIdAdministrador() {
@@ -47,6 +49,12 @@ public class Administrador {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getRol() {
+		return rol;
+	}
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
 	public List<Noticia> getNoticias() {
 		return noticias;
 	}
@@ -56,7 +64,8 @@ public class Administrador {
 	@Override
 	public String toString() {
 		return "Administrador [idAdministrador=" + idAdministrador + ", usuario=" + usuario + ", password=" + password
-				+ ", noticias=" + noticias + "]";
+				+ ", rol=" + rol + ", noticias=" + noticias + "]";
 	}
+	
 	
 }

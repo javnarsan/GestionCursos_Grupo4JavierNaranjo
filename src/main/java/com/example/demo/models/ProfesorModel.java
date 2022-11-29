@@ -17,6 +17,7 @@ public class ProfesorModel {
 	private String email;
 	private String usuario;
 	private String password;
+	private String rol;
 	private List<Curso> cursosProf;
 	
 	public ProfesorModel() {
@@ -25,7 +26,7 @@ public class ProfesorModel {
 	}
 
 	public ProfesorModel(int id, String nombre, String apellido, String email, String usuario, String password,
-			List<Curso> cursosProf) {
+			String rol, List<Curso> cursosProf) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -33,6 +34,7 @@ public class ProfesorModel {
 		this.email = email;
 		this.usuario = usuario;
 		this.password = password;
+		this.rol = rol;
 		this.cursosProf = cursosProf;
 	}
 
@@ -84,6 +86,14 @@ public class ProfesorModel {
 		this.password = password;
 	}
 
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 	public List<Curso> getCursosProf() {
 		return cursosProf;
 	}
@@ -95,7 +105,10 @@ public class ProfesorModel {
 	@Override
 	public String toString() {
 		return "ProfesorModel [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
-				+ ", usuario=" + usuario + ", password=" + password + ", cursosProf=" + cursosProf + "]";
+				+ ", usuario=" + usuario + ", password=" + password + ", rol=" + rol + ", cursosProf=" + cursosProf
+				+ "]";
 	}
+
+	
 	
 }

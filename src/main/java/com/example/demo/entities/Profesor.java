@@ -21,6 +21,7 @@ public class Profesor {
 	private String email;
 	private String usuario;
 	private String password;
+	private String rol;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "profesor")
 	private List<Curso> cursosProf;
 	
@@ -29,7 +30,7 @@ public class Profesor {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Profesor(int id, String nombre, String apellido, String email, String usuario, String password,
+	public Profesor(int id, String nombre, String apellido, String email, String usuario, String password, String rol,
 			List<Curso> cursosProf) {
 		super();
 		this.id = id;
@@ -38,6 +39,7 @@ public class Profesor {
 		this.email = email;
 		this.usuario = usuario;
 		this.password = password;
+		this.rol = rol;
 		this.cursosProf = cursosProf;
 	}
 
@@ -89,6 +91,14 @@ public class Profesor {
 		this.password = password;
 	}
 
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 	public List<Curso> getCursosProf() {
 		return cursosProf;
 	}
@@ -100,7 +110,10 @@ public class Profesor {
 	@Override
 	public String toString() {
 		return "Profesor [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
-				+ ", usuario=" + usuario + ", password=" + password + ", cursosProf=" + cursosProf + "]";
+				+ ", usuario=" + usuario + ", password=" + password + ", rol=" + rol + ", cursosProf=" + cursosProf
+				+ "]";
 	}
+
+
 	
 }

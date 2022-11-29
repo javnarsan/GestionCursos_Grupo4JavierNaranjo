@@ -19,6 +19,7 @@ public class Alumno {
 	private String usuario;
 	private String password;
 	private String foto;
+	private String rol;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "alumno")
 	private List<Comentario> comentarios;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "alumnoMat")
@@ -26,9 +27,10 @@ public class Alumno {
 	public Alumno() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
+	
+}
 	public Alumno(int idAlumno, String nombre, String apellidos, String email, String usuario, String password,
-			String foto, List<Comentario> comentarios, List<Matricula> matriculas) {
+			String foto, String rol, List<Comentario> comentarios, List<Matricula> matriculas) {
 		super();
 		this.idAlumno = idAlumno;
 		this.nombre = nombre;
@@ -37,6 +39,7 @@ public class Alumno {
 		this.usuario = usuario;
 		this.password = password;
 		this.foto = foto;
+		this.rol = rol;
 		this.comentarios = comentarios;
 		this.matriculas = matriculas;
 	}
@@ -82,6 +85,12 @@ public class Alumno {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+	public String getRol() {
+		return rol;
+	}
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
 	public List<Comentario> getComentarios() {
 		return comentarios;
 	}
@@ -97,8 +106,8 @@ public class Alumno {
 	@Override
 	public String toString() {
 		return "Alumno [idAlumno=" + idAlumno + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
-				+ ", usuario=" + usuario + ", password=" + password + ", foto=" + foto + ", comentarios=" + comentarios
-				+ ", matriculas=" + matriculas + "]";
+				+ ", usuario=" + usuario + ", password=" + password + ", foto=" + foto + ", rol=" + rol
+				+ ", comentarios=" + comentarios + ", matriculas=" + matriculas + "]";
 	}
 	
 }
