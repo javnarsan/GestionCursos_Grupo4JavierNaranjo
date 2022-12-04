@@ -14,7 +14,7 @@ public class Comentario {
 	private int idComentario;
 	@ManyToOne
 	@JoinColumn(name="alumnoId")
-	private Alumno alumno;
+	private User alumnoCom;
 	@ManyToOne
 	@JoinColumn(name="cursoId")
 	private Curso curso;
@@ -23,10 +23,10 @@ public class Comentario {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Comentario(int idComentario, Alumno alumno, Curso curso, String comentario) {
+	public Comentario(int idComentario, User alumno, Curso curso, String comentario) {
 		super();
 		this.idComentario = idComentario;
-		this.alumno = alumno;
+		this.alumnoCom = alumno;
 		this.curso = curso;
 		this.comentario = comentario;
 	}
@@ -36,11 +36,11 @@ public class Comentario {
 	public void setIdComentario(int idComentario) {
 		this.idComentario = idComentario;
 	}
-	public Alumno getAlumno() {
-		return alumno;
+	public User getAlumno() {
+		return alumnoCom;
 	}
-	public void setAlumno(Alumno alumno) {
-		this.alumno = alumno;
+	public void setAlumno(User alumno) {
+		this.alumnoCom = alumno;
 	}
 	public Curso getCurso() {
 		return curso;
@@ -56,7 +56,7 @@ public class Comentario {
 	}
 	@Override
 	public String toString() {
-		return "Comentario [idComentario=" + idComentario + ", alumno=" + alumno + ", curso=" + curso + ", comentario="
+		return "Comentario [idComentario=" + idComentario + ", alumno=" + alumnoCom + ", curso=" + curso + ", comentario="
 				+ comentario + "]";
 	}
 	

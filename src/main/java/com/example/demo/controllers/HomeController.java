@@ -13,14 +13,14 @@ public class HomeController {
 	public String insertarTituloPestaña(Model model) {
 		String titulo="inicio";
 		model.addAttribute("titulo",titulo);
-		return "index.html";
+		return "index";
 	}
 	
-	@GetMapping("/registro")
+	/*@GetMapping("/registro")
 	public String registro(Model model) {
 		String titulo="registro";
 		model.addAttribute("titulo",titulo);
-		return "registro.html";
-	}
+		return "registro";
+	}*/
 
 }

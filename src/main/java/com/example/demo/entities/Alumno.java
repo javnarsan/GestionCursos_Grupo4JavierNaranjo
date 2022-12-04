@@ -1,4 +1,4 @@
-package com.example.demo.entities;
+/*package com.example.demo.entities;
 
 import java.util.List;
 
@@ -110,4 +110,4 @@ public class Alumno {
 				+ ", comentarios=" + comentarios + ", matriculas=" + matriculas + "]";
 	}
 	
-}
+}*/

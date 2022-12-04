@@ -17,20 +17,20 @@ public class Noticia {
 	private String imagen;
 	@ManyToOne
 	@JoinColumn(name="administradorId")
-	private Administrador administrador;
+	private User administradorNot;
 	
 	public Noticia() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Noticia(int id, String titulo, String descripcion, String imagen, Administrador administrador) {
+	public Noticia(int id, String titulo, String descripcion, String imagen, User administrador) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
-		this.administrador = administrador;
+		this.administradorNot = administrador;
 	}
 
 	public int getId() {
@@ -65,18 +65,18 @@ public class Noticia {
 		this.imagen = imagen;
 	}
 
-	public Administrador getAdministrador() {
-		return administrador;
+	public User getAdministrador() {
+		return administradorNot;
 	}
 
-	public void setAdministrador(Administrador administrador) {
-		this.administrador = administrador;
+	public void setAdministrador(User administrador) {
+		this.administradorNot = administrador;
 	}
 
 	@Override
 	public String toString() {
 		return "Noticia [id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", imagen=" + imagen
-				+ ", administrador=" + administrador + "]";
+				+ ", administrador=" + administradorNot + "]";
 	}
 	
 }

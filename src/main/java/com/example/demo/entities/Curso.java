@@ -21,7 +21,7 @@ public class Curso {
 	private int nivel;
 	@ManyToOne
 	@JoinColumn(name="profesorId")
-	private Profesor profesor;
+	private User profesorCurs;
 	private String fechaInicio;
 	private String fechaFin;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "curso")
@@ -32,14 +32,14 @@ public class Curso {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Curso(int idAdministrador, String nombre, String descripcion, int nivel, Profesor profesor,
+	public Curso(int idAdministrador, String nombre, String descripcion, int nivel, User profesor,
 			String fechaInicio, String fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
 		super();
 		this.idAdministrador = idAdministrador;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.nivel = nivel;
-		this.profesor = profesor;
+		this.profesorCurs = profesor;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.comentarios = comentarios;
@@ -69,11 +69,11 @@ public class Curso {
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
-	public Profesor getProfesor() {
-		return profesor;
+	public User getProfesor() {
+		return profesorCurs;
 	}
-	public void setProfesor(Profesor profesor) {
-		this.profesor = profesor;
+	public void setProfesor(User profesor) {
+		this.profesorCurs = profesor;
 	}
 	public String getFechaInicio() {
 		return fechaInicio;
@@ -102,7 +102,7 @@ public class Curso {
 	@Override
 	public String toString() {
 		return "Curso [idAdministrador=" + idAdministrador + ", nombre=" + nombre + ", descripcion=" + descripcion
-				+ ", nivel=" + nivel + ", profesor=" + profesor + ", fechaInicio=" + fechaInicio + ", fechaFin="
+				+ ", nivel=" + nivel + ", profesor=" + profesorCurs + ", fechaInicio=" + fechaInicio + ", fechaFin="
 				+ fechaFin + ", comentarios=" + comentarios + ", matriculas=" + matriculas + "]";
 	}
 	

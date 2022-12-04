@@ -14,7 +14,7 @@ public class Matricula {
 	private int id;
 	@ManyToOne
 	@JoinColumn(name="alumnoMatId")
-	private Alumno alumnoMat;
+	private User alumnoMat;
 	@ManyToOne
 	@JoinColumn(name="cursoMatId")
 	private Curso cursoMat;
@@ -23,7 +23,7 @@ public class Matricula {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Matricula(int id, Alumno alumnoMat, Curso cursoMat, int valoraciones) {
+	public Matricula(int id, User alumnoMat, Curso cursoMat, int valoraciones) {
 		super();
 		this.id = id;
 		this.alumnoMat = alumnoMat;
@@ -36,10 +36,10 @@ public class Matricula {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Alumno getAlumnoMat() {
+	public User getAlumnoMat() {
 		return alumnoMat;
 	}
-	public void setAlumnoMat(Alumno alumnoMat) {
+	public void setAlumnoMat(User alumnoMat) {
 		this.alumnoMat = alumnoMat;
 	}
 	public Curso getCursoMat() {

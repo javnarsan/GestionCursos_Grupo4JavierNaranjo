@@ -18,7 +18,7 @@ public class LoginController {
 		@Autowired
 		@Qualifier("userService")
 		private UserService userService;
-		@GetMapping("/auth/login")
+		@GetMapping("/loguearse")
 		public String login(Model model,@RequestParam(name="error",required=false) String error,
 				@RequestParam(name="logout",required=false) String logout) {
 					model.addAttribute("user",new User());
@@ -27,16 +27,18 @@ public class LoginController {
 					return "login";
 			
 		}
-		@GetMapping("/auth/registerForm")
+		@GetMapping("/registro")
 		public String registerForm(Model model) {
 			model.addAttribute("user",new User());
+		
+			
 			return "registro";
 		}
-		@PostMapping("/auth/register")
+		@PostMapping("/registro")
 		public String register(@ModelAttribute User user,RedirectAttributes flash) {
 			userService.registrar(user);
 			flash.addFlashAttribute("success", "User register sucesfully!");
-			return "redirect:/auth/login";
+			return "redirect:/resgistro";
 		}
 		
 		

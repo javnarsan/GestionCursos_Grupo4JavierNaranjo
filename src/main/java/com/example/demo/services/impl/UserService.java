@@ -23,17 +23,22 @@ public class UserService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		com.example.demo.entities.User usuario=userRepository.findByEmail(email);
+		System.err.print(usuario.getEmail().toString());
+		System.err.print(usuario.getPassword().toString());
 		UserBuilder builder=null;
+		UserDetails user=null;
 		if(email!=null) {
-			builder=User.builder().authorities(email);
+			//forma para usar email como usuario en el login
+			user= User.withUsername(usuario.getEmail()).password(usuario.getPassword()).disabled(false).authorities(usuario.getRole()).build();
+			/*builder=User.builder().authorities(email);
 			builder.disabled(false);
 			builder.password(usuario.getPassword());
-			builder.authorities(new SimpleGrantedAuthority(usuario.getRole()));
+			builder.authorities(new SimpleGrantedAuthority(usuario.getRole()));*/
 		}
 		else 
 			throw new UsernameNotFoundException("Usuario no encontrado");
 			
-		return builder.build();
+		return user;
 		
 	}
 
@@ -43,8 +48,8 @@ public class UserService implements UserDetailsService{
 	}
 	public com.example.demo.entities.User registrar(com.example.demo.entities.User user){
 		user.setPassword(passwordEncoder().encode(user.getPassword()));
-		user.setEnabled(true);
-		user.setRole("ROLE_USER");
+		user.setEnabled(false);
+		user.setRole("ROLE_ALUMNO");
 		return userRepository.save(user);
 	}
 }
