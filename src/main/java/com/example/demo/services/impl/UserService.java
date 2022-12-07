@@ -1,4 +1,6 @@
 package com.example.demo.services.impl;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -13,9 +15,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.repositories.UserRepository;
+import com.example.demo.services.UsuarioService;
 
 @Service("userService")
-public class UserService implements UserDetailsService{
+public class UserService implements UserDetailsService,UsuarioService{
 	@Autowired
 	@Qualifier("userRepository")
 	private UserRepository userRepository;
@@ -51,5 +54,11 @@ public class UserService implements UserDetailsService{
 		user.setEnabled(false);
 		user.setRole("ROLE_ALUMNO");
 		return userRepository.save(user);
+	}
+
+	@Override
+	public List<com.example.demo.entities.User> listAllUsuarios() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

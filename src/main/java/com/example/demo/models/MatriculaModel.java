@@ -1,22 +1,22 @@
 package com.example.demo.models;
 
-import com.example.demo.entities.Alumno;
 import com.example.demo.entities.Curso;
+import com.example.demo.entities.User;
 
 
 public class MatriculaModel {
 	private int id;
-	private Alumno alumnoMat;
+	private User usuarioMat;
 	private Curso cursoMat;
 	private int valoraciones;
 	public MatriculaModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MatriculaModel(int id, Alumno alumnoMat, Curso cursoMat, int valoraciones) {
+	public MatriculaModel(int id, User ausuarioMat, Curso cursoMat, int valoraciones) {
 		super();
 		this.id = id;
-		this.alumnoMat = alumnoMat;
+		this.usuarioMat = usuarioMat;
 		this.cursoMat = cursoMat;
 		this.valoraciones = valoraciones;
 	}
@@ -26,11 +26,11 @@ public class MatriculaModel {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Alumno getAlumnoMat() {
-		return alumnoMat;
+	public User getUsuarioMat() {
+		return usuarioMat;
 	}
-	public void setAlumnoMat(Alumno alumnoMat) {
-		this.alumnoMat = alumnoMat;
+	public void setUsuarioMat(User usuarioMat) {
+		this.usuarioMat = usuarioMat;
 	}
 	public Curso getCursoMat() {
 		return cursoMat;
@@ -46,7 +46,7 @@ public class MatriculaModel {
 	}
 	@Override
 	public String toString() {
-		return "MatriculaModel [id=" + id + ", alumnoMat=" + alumnoMat + ", cursoMat=" + cursoMat + ", valoraciones="
+		return "MatriculaModel [id=" + id + ", usuarioMat=" + usuarioMat + ", cursoMat=" + cursoMat + ", valoraciones="
 				+ valoraciones + "]";
 	}
 	

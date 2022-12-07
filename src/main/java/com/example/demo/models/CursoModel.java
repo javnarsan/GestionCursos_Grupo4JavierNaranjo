@@ -12,14 +12,14 @@ import javax.persistence.OneToMany;
 
 import com.example.demo.entities.Comentario;
 import com.example.demo.entities.Matricula;
-import com.example.demo.entities.Profesor;
+import com.example.demo.entities.User;
 
 public class CursoModel {
 	private int idAdministrador;
 	private String nombre;
 	private String descripcion;
 	private int nivel;
-	private Profesor profesor;
+	private User usuario;
 	private String fechaInicio;
 	private String fechaFin;
 	private List<Comentario> comentarios;
@@ -28,14 +28,14 @@ public class CursoModel {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CursoModel(int idAdministrador, String nombre, String descripcion, int nivel, Profesor profesor,
+	public CursoModel(int idAdministrador, String nombre, String descripcion, int nivel, User usuario,
 			String fechaInicio, String fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
 		super();
 		this.idAdministrador = idAdministrador;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.nivel = nivel;
-		this.profesor = profesor;
+		this.usuario = usuario;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.comentarios = comentarios;
@@ -65,11 +65,11 @@ public class CursoModel {
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
-	public Profesor getProfesor() {
-		return profesor;
+	public User getUsuario() {
+		return usuario;
 	}
-	public void setProfesor(Profesor profesor) {
-		this.profesor = profesor;
+	public void setUsuario(User usuario) {
+		this.usuario = usuario;
 	}
 	public String getFechaInicio() {
 		return fechaInicio;
@@ -95,12 +95,7 @@ public class CursoModel {
 	public void setMatriculas(List<Matricula> matriculas) {
 		this.matriculas = matriculas;
 	}
-	@Override
-	public String toString() {
-		return "CursoModel [idAdministrador=" + idAdministrador + ", nombre=" + nombre + ", descripcion=" + descripcion
-				+ ", nivel=" + nivel + ", profesor=" + profesor + ", fechaInicio=" + fechaInicio + ", fechaFin="
-				+ fechaFin + ", comentarios=" + comentarios + ", matriculas=" + matriculas + "]";
-	}
+	
 	
 	
 }

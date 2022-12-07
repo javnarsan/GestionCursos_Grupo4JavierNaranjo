@@ -1,27 +1,26 @@
 package com.example.demo.models;
 
-
-import com.example.demo.entities.Administrador;
+import com.example.demo.entities.User;
 
 public class NoticiaModel {
 	private int id;
 	private String titulo;
 	private String descripcion;
 	private String imagen;
-	private Administrador administrador;
+	private User usuario;
 	
 	public NoticiaModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public NoticiaModel(int id, String titulo, String descripcion, String imagen, Administrador administrador) {
+	public NoticiaModel(int id, String titulo, String descripcion, String imagen, User administrador) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
-		this.administrador = administrador;
+		this.usuario = administrador;
 	}
 
 	public int getId() {
@@ -56,17 +55,19 @@ public class NoticiaModel {
 		this.imagen = imagen;
 	}
 
-	public Administrador getAdministrador() {
-		return administrador;
+	public User getUsuario() {
+		return usuario;
 	}
 
-	public void setAdministrador(Administrador administrador) {
-		this.administrador = administrador;
+	public void setUsuario(User usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override
 	public String toString() {
 		return "NoticiaModel [id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", imagen=" + imagen
-				+ ", administrador=" + administrador + "]";
+				+ ", usuario=" + usuario + "]";
 	}
+
+	
 }
