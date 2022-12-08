@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.models.UserModel;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.UsuarioService;
 
@@ -58,6 +59,18 @@ public class UserService implements UserDetailsService,UsuarioService{
 
 	@Override
 	public List<com.example.demo.entities.User> listAllUsuarios() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public com.example.demo.entities.User transform(UserModel userModel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UserModel transform(com.example.demo.entities.User user) {
 		// TODO Auto-generated method stub
 		return null;
 	}
