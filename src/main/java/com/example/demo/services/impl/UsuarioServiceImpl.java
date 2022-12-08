@@ -35,4 +35,10 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return modelMapper.map(user, UserModel.class);
 	}
 
+	@Override
+	public int removeProfesor(int id) {
+		userRepository.deleteById(id);
+		return 0;
+	}
+
 }
