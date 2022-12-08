@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Insert title here</title><!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Insert title here</title>
+		<link th:rel="stylesheet"
+         th:href="@{/webjars/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css}" />
+      <link th:rel="stylesheet"
+         th:href="@{/webjars/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.standalone.css}" />
+      <link th:rel="stylesheet"
+         th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}" />
+	</head>
+	<body>
+		<table class="table table-striped table-bordered"> 
+			<thead class="thead-light"> 
+				<tr>
+					<th>Nombre</th> 
+					<th>Apellidos</th> 
+					<th>Email</th> 
+				</tr> 
+			</thead>
+			<tbody th:each="profesor: ${profesores}"> 
+				<tr>
+					<th th:text=${profesor.nombre}></th> 
+					<th th:text=${profesor.apellidos}></th> 
+					<th th:text=${profesor.email}></th> 
+					<th> 
+						<a>
+						<button type="button" class="btn btn-primary btm-sm">Edit</button> 
+						</a> 
+						<a href="#"> 
+						<button type="button" class="btn btn-danger btm-sm">Delete</button>
+						</a>
+					</th> 
+				</tr> 
+			</tbody> 
+		</table>
+		<a >
+						<button type="button" class="btn btn-success btm-sm">Create</button> 
+						</a> 
+	</body>
+	 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+      <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</html>

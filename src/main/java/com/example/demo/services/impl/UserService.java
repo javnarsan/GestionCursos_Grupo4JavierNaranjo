@@ -1,10 +1,11 @@
 package com.example.demo.services.impl;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,8 +19,10 @@ import com.example.demo.models.UserModel;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.UsuarioService;
 
+
+
 @Service("userService")
-public class UserService implements UserDetailsService,UsuarioService{
+public class UserService implements UserDetailsService{
 	@Autowired
 	@Qualifier("userRepository")
 	private UserRepository userRepository;
@@ -57,21 +60,4 @@ public class UserService implements UserDetailsService,UsuarioService{
 		return userRepository.save(user);
 	}
 
-	@Override
-	public List<com.example.demo.entities.User> listAllUsuarios() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public com.example.demo.entities.User transform(UserModel userModel) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public UserModel transform(com.example.demo.entities.User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
