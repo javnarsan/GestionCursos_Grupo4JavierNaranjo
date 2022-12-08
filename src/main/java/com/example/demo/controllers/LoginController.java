@@ -45,7 +45,7 @@ public class LoginController {
 			 else {
 				 userService.registrar(user);
 				 flash.addFlashAttribute("success", "Usuario registrado correctamente!");
-				 return "login";
+				 return "redirect:/loguearse";
 			 }
 			
 		}

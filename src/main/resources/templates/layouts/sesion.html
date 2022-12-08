@@ -15,11 +15,12 @@
 			<label for="inputPassword" class="sr-only">Password</label>
 			<input type="password" class="form-control" placeholder="Password" name="password" id="password"/>
 			</br>
-			<div th:if="${error!=null}" class="alert alert-danger" role="alert">Invalid username</div>
+			<div th th:if="${error!=null}" class="alert alert-danger" role="alert">Invalid username</div>
 			<div th:if="${logout!=null}" class="alert alert-info" role="alert">Logout successful</div>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-		</form>
-	
+		</form>	
+	<br/>
+	<div class="alert alert-success" th:if="${success!=null}" th:text="${success}"></div>
 	</div>
 </body>
 </html>
