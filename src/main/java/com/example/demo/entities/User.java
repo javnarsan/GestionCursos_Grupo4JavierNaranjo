@@ -8,20 +8,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import net.bytebuddy.implementation.bind.annotation.Empty;
 
 @Entity
 public class User {
 	@Id
 	@GeneratedValue
 	private long id;
-	
+	@NotNull(message="El email es obligatorio")
 	@Column(name="email",unique=true,nullable=false)
 	private String email;
+	
 	@Column(name="password",nullable=false)
+	@NotNull(message="El password es obligatorio")
+	@Size(max=100)
 	private String password;
+	
 	private boolean enabled;
 	private String role;
+	@NotNull(message="El nombre es obligatorio")
 	private String nombre;
+	@NotNull(message="El apellido es obligatorio")
+	@Size(min=1,max=10)
+	@NotEmpty
 	private String apellidos;
 	private String foto;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "alumnoCom")

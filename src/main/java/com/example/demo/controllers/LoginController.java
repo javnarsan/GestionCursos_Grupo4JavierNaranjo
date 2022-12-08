@@ -1,9 +1,12 @@
 package com.example.demo.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,10 +38,16 @@ public class LoginController {
 			return "registro";
 		}
 		@PostMapping("/registro")
-		public String register(@ModelAttribute User user,RedirectAttributes flash) {
-			userService.registrar(user);
-			flash.addFlashAttribute("success", "User register sucesfully!");
-			return "redirect:/resgistro";
+		public String register(@Valid @ModelAttribute User user,BindingResult result,RedirectAttributes flash) {
+			 if (result.hasErrors()) {			
+				 return "redirect:/resgistro";
+			 }
+			 else {
+				 userService.registrar(user);
+				 flash.addFlashAttribute("success", "Usuario registrado correctamente!");
+				 return "redirect:/loguearse";
+			 }
+			
 		}
 		
 		
