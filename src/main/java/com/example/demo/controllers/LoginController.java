@@ -40,12 +40,12 @@ public class LoginController {
 		@PostMapping("/registro")
 		public String register(@Valid @ModelAttribute User user,BindingResult result,RedirectAttributes flash) {
 			 if (result.hasErrors()) {			
-				 return "redirect:/resgistro";
+				 return "registro";
 			 }
 			 else {
 				 userService.registrar(user);
 				 flash.addFlashAttribute("success", "Usuario registrado correctamente!");
-				 return "redirect:/loguearse";
+				 return "login";
 			 }
 			
 		}

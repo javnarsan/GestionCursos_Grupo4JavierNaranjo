@@ -17,7 +17,7 @@
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
                                 <input id="fname" th:field="*{nombre}" name="name" type="text" placeholder="Nombre" class="form-control">
-                                <p class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
                             </div>
                         </div>
                         <br/>
@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="email" th:field="*{email}" name="email" type="text" placeholder="Correo electrónico" class="form-control">
+                                <input id="email" th:field="*{email}" name="email" type="email" placeholder="Correo electrónico" class="form-control">
                                 <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="password" th:field="*{password}" name="password" type="text" placeholder="Contraseña" class="form-control">
+                                <input id="password" th:field="*{password}" name="password" type="password" placeholder="Contraseña" class="form-control">
                                 <small class="form-text text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
                             </div>
                         </div>
