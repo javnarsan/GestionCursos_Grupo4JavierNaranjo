@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head th:replace="layouts/header :: head(~{::title})">
-		<meta charset="ISO-8859-1">
-		<title>Profesores</title>
+		<title>Cursos</title>
 	</head>
 	<body>
 		<table class="table table-striped table-bordered"> 
 			<thead class="thead-light"> 
 				<tr>
 					<th>Nombre</th> 
-					<th>Apellidos</th> 
-					<th>Email</th> 
+					<th>Descripcion</th>
 				</tr> 
 			</thead>
-			<tbody th:each="profesor: ${profesores}"> 
+			<tbody th:each="curso: ${cursos}"> 
 				<tr>
-					<th th:text=${profesor.nombre}></th> 
-					<th th:text=${profesor.apellidos}></th> 
-					<th th:text=${profesor.email}></th> 
+					<th th:text=${curso.nombre}></th> 
+					<th th:text=${curso.descripcion}></th>
 					<th> 
 						<a>
 						<button type="button" class="btn btn-primary btm-sm">Edit</button> 
 						</a> 
-						<a th:href="@{/users/deleteProfesor}+${profesor.id}"> 
+						<a th:href="@{/cursos/deleteCurso}+${curso.id}"> 
 						<button type="button" class="btn btn-danger btm-sm">Delete</button>
 						</a>
 					</th> 
@@ -30,8 +27,8 @@
 			</tbody> 
 		</table>
 		<a >
-						<button type="button" class="btn btn-success btm-sm">Create</button> 
-						</a> 
+			<button type="button" class="btn btn-success btm-sm">Create</button> 
+		</a> 
 	</body>
 	 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
       <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

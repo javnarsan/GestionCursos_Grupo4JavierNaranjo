@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 public class Curso {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idAdministrador;
+	private int id;
 	private String nombre;
 	private String descripcion;
 	private int nivel;
@@ -32,10 +32,10 @@ public class Curso {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Curso(int idAdministrador, String nombre, String descripcion, int nivel, User profesor,
+	public Curso(int id, String nombre, String descripcion, int nivel, User profesor,
 			String fechaInicio, String fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
 		super();
-		this.idAdministrador = idAdministrador;
+		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.nivel = nivel;
@@ -45,11 +45,11 @@ public class Curso {
 		this.comentarios = comentarios;
 		this.matriculas = matriculas;
 	}
-	public int getIdAdministrador() {
-		return idAdministrador;
+	public int getId() {
+		return id;
 	}
-	public void setIdAdministrador(int idAdministrador) {
-		this.idAdministrador = idAdministrador;
+	public void setIdAdministrador(int id) {
+		this.id = id;
 	}
 	public String getNombre() {
 		return nombre;
@@ -101,7 +101,7 @@ public class Curso {
 	}
 	@Override
 	public String toString() {
-		return "Curso [idAdministrador=" + idAdministrador + ", nombre=" + nombre + ", descripcion=" + descripcion
+		return "Curso [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion
 				+ ", nivel=" + nivel + ", profesor=" + profesorCurs + ", fechaInicio=" + fechaInicio + ", fechaFin="
 				+ fechaFin + ", comentarios=" + comentarios + ", matriculas=" + matriculas + "]";
 	}

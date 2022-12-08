@@ -15,7 +15,7 @@ import com.example.demo.entities.Matricula;
 import com.example.demo.entities.User;
 
 public class CursoModel {
-	private int idAdministrador;
+	private int id;
 	private String nombre;
 	private String descripcion;
 	private int nivel;
@@ -28,10 +28,10 @@ public class CursoModel {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CursoModel(int idAdministrador, String nombre, String descripcion, int nivel, User usuario,
+	public CursoModel(int id, String nombre, String descripcion, int nivel, User usuario,
 			String fechaInicio, String fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
 		super();
-		this.idAdministrador = idAdministrador;
+		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.nivel = nivel;
@@ -41,11 +41,11 @@ public class CursoModel {
 		this.comentarios = comentarios;
 		this.matriculas = matriculas;
 	}
-	public int getIdAdministrador() {
-		return idAdministrador;
+	public int getId() {
+		return id;
 	}
-	public void setIdAdministrador(int idAdministrador) {
-		this.idAdministrador = idAdministrador;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getNombre() {
 		return nombre;
