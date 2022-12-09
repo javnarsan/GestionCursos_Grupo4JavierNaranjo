@@ -9,7 +9,6 @@ public interface UsuarioService {
 	public abstract List<UserModel> listAllProfesores();
 	public abstract int removeProfesor(int id);
 	public abstract List<UserModel> listAllStudents();
-	public abstract int removeStudent(int id);
 	public abstract User transform(UserModel userModel);
 	public abstract UserModel transform(User user);
 	

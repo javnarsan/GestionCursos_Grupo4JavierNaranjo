@@ -52,15 +52,5 @@ public class UserController {
 		mav.addObject("student",usuarioService.listAllStudents());
 		return mav;
 	}
-		
 	
-	@GetMapping("/borrarEstudiante/{id}")
-	public String removeCourse(@PathVariable int id) {
-		usuarioService.removeStudent(id);
-		return "redirect:/estudiantes";
-	}
-	
-	
-	
-
 }
