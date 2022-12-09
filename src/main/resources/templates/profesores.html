@@ -19,7 +19,7 @@
 					<th th:text=${profesor.apellidos}></th> 
 					<th th:text=${profesor.email}></th> 
 					<th> 
-						<a>
+						<a th:href="@{/users/formProfesor/}+${profesor.id}">
 						<button type="button" class="btn btn-primary btm-sm">Edit</button> 
 						</a> 
 						<a th:href="@{/users/deleteProfesor/}+${profesor.id}"> 
@@ -29,7 +29,7 @@
 				</tr> 
 			</tbody> 
 		</table>
-		<a >
+		<a th:href="@{/users/formProfesor/}" >
 						<button type="button" class="btn btn-success btm-sm">Create</button> 
 						</a> 
 	</body>

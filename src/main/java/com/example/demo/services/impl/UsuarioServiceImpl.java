@@ -45,6 +45,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 	public List<UserModel> listAllStudents() {
 		return userRepository.findAll().stream().filter(c->"ROLE_ALUMNO".equals(c.getRole())).map(c->transform(c)).collect(Collectors.toList());
 	}
+	@Override
 	public User addProfesor(UserModel profesorModel) {
 		profesorModel.setRole("ROLE_PROFESOR");
 		return userRepository.save(transform(profesorModel));
@@ -52,13 +53,13 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public User updateProfesor(UserModel profesorModel) {
+		profesorModel.setRole("ROLE_PROFESOR");
 		return userRepository.save(transform(profesorModel));
 	}
 
 	@Override
 	public UserModel findProfesor(long id) {
 		return transform(userRepository.findById(id).orElse(null));
-
 	}
 
 }
