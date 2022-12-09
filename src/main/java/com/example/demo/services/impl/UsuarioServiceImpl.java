@@ -36,7 +36,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public int removeProfesor(int id) {
+	public int removeProfesor(long id) {
 		userRepository.deleteById(id);
 		return 0;
 	}

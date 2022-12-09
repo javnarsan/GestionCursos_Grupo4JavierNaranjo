@@ -39,7 +39,7 @@ public class UserController {
 			flash.addFlashAttribute("success","Profesor eliminado correctamente");
 		else 
 			flash.addFlashAttribute("error","No de ha podido eliminar al profesor");
-		return "redirect:/listProfesores";
+		return "redirect:/users/listProfesores";
 	}
 	
 
