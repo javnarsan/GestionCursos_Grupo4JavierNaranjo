@@ -41,4 +41,20 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return 0;
 	}
 
+	@Override
+	public User addProfesor(UserModel profesorModel) {
+		profesorModel.setRole("ROLE_PROFESOR");
+		return userRepository.save(transform(profesorModel));
+	}
+
+	@Override
+	public User updateProfesor(UserModel profesorModel) {
+		return userRepository.save(transform(profesorModel));
+	}
+
+	@Override
+	public UserModel findProfesor(long id) {
+		return transform(userRepository.findById(id).orElse(null));
+	}
+
 }

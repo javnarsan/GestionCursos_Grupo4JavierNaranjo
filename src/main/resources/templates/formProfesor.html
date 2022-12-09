@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form class="form-horizontal" th:action="@{/users/addProfesor/}" th:object="${profesor}" method="post">
+                    <fieldset>
+                        <legend th:text="${profesor.id!=0} ? 'Editar Profesor' : 'Nuevo Profesor'" class="text-center header">Nuevo Profesor</legend>
+						<input type="hidden" th:field="*{id}" id="id"/>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="fname" th:field="*{nombre}" name="name" type="text" placeholder="Nombre" class="form-control">
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="lname" th:field="*{apellidos}" name="name" type="text" placeholder="Apellidos" class="form-control">
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"></small>
+                            </div>
+                        </div>
+						<br/>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="email" th:field="*{email}" name="email" type="email" placeholder="Correo electrónico" class="form-control">
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+                            </div>
+                        </div>
+						<br/>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="password" th:field="*{password}" name="password" type="password" placeholder="Contraseña" class="form-control">
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
+                            </div>
+                        </div>
+						<br/>
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Crear</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
