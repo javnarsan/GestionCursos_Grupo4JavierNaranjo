@@ -36,7 +36,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public int removeProfesor(int id) {
+	public int removeProfesor(long id) {
 		userRepository.deleteById(id);
 		return 0;
 	}
@@ -44,6 +44,21 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Override
 	public List<UserModel> listAllStudents() {
 		return userRepository.findAll().stream().filter(c->"ROLE_ALUMNO".equals(c.getRole())).map(c->transform(c)).collect(Collectors.toList());
+	}
+	public User addProfesor(UserModel profesorModel) {
+		profesorModel.setRole("ROLE_PROFESOR");
+		return userRepository.save(transform(profesorModel));
+	}
+
+	@Override
+	public User updateProfesor(UserModel profesorModel) {
+		return userRepository.save(transform(profesorModel));
+	}
+
+	@Override
+	public UserModel findProfesor(long id) {
+		return transform(userRepository.findById(id).orElse(null));
+
 	}
 
 }
