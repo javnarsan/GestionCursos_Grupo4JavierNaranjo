@@ -48,12 +48,14 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Override
 	public User addProfesor(UserModel profesorModel) {
 		profesorModel.setRole("ROLE_PROFESOR");
+		profesorModel.setPassword(UserService.passwordEncoder().encode(profesorModel.getPassword()));
 		return userRepository.save(transform(profesorModel));
 	}
 
 	@Override
 	public User updateProfesor(UserModel profesorModel) {
 		profesorModel.setRole("ROLE_PROFESOR");
+		profesorModel.setPassword(UserService.passwordEncoder().encode(profesorModel.getPassword()));
 		return userRepository.save(transform(profesorModel));
 	}
 
