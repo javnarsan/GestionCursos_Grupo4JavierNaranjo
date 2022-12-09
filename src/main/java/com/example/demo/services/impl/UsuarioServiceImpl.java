@@ -41,4 +41,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return 0;
 	}
 
+	@Override
+	public List<UserModel> listAllStudents() {
+		return userRepository.findAll().stream().filter(c->"ROLE_ALUMNO".equals(c.getRole())).map(c->transform(c)).collect(Collectors.toList());
+	}
+
 }

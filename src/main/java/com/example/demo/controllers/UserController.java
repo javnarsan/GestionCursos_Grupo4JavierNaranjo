@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -22,6 +25,7 @@ import com.example.demo.services.impl.UserService;
 @RequestMapping("/users")
 public class UserController {
 	private static final String Profesores_VIEW="profesores";
+	private static final String STUDENTS_VIEW="estudiantes";
 	@Autowired
 	@Qualifier("usuarioService")
 	private UsuarioService usuarioService;
@@ -41,6 +45,22 @@ public class UserController {
 			flash.addFlashAttribute("error","No de ha podido eliminar al profesor");
 		return "redirect:/listProfesores";
 	}
+	
+	@GetMapping("/listarEstudiantes")
+	public ModelAndView listStudents() {
+		ModelAndView mav = new ModelAndView(STUDENTS_VIEW);
+		mav.addObject("student",usuarioService.listAllStudents());
+		return mav;
+	}
+		
+	
+	@GetMapping("/borrarEstudiante/{id}")
+	public String removeCourse(@PathVariable int id) {
+		usuarioService.removeStudent(id);
+		return "redirect:/estudiantes";
+	}
+	
+	
 	
 
 }

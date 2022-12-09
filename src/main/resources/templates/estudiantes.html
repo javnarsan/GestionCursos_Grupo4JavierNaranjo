@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layouts/header :: head(~{::title})">
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title th:text="${titulo}"></title>
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-light navbar-light">
+		<a class="navbar-brand" th:href="@{/}">Administración</a>
+		<!-- Links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<a class="nav-link" th:href="@{/students}"><li class="nav-item">Control
+					de estudiantes</li></a>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="Row">
+			<h2>Lista de estudiantes</h2>
+		</div>
+		<table class="table table-striped table-bordered">
+			<thead class="table-light">
+				<tr>
+					<th>Nombre</th>
+					<th>Apellidos</th>
+					<th>Email</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody th:each="student: ${student}">
+				<tr>
+					<td th:text=${student.nombre}>
+					</td>
+					<td th:text=${student.apellidos}>
+					</td>
+					<td th:text=${student.email}>
+					</td>
+					<td><a th:href="@{/activarEstudiante/{id}(id=${student.id})}"><button
+								class="btn btn-info" type="button">Activar</button></a> <a
+						th:href="@{/desactivarEstudiante/{id}(id=${student.id})}"><button
+								type="button" class="btn btn-danger">Desactivar</button></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
