@@ -45,10 +45,16 @@
 					</td>
 					<td th:text=${student.email}>
 					</td>
-					<td><a th:href="@{/users/activarEstudiante/{id}(id=${student.id})}"><button
-								class="btn btn-info" type="button">Activar</button></a> <a
-						th:href="@{/users/desactivarEstudiante/{id}(id=${student.id})}"><button
-								type="button" class="btn btn-danger">Desactivar</button></a></td>
+					<td>
+						<div th:switch="${student.enabled}">
+							<a th:case="false" th:href="@{/users/activarEstudiante/{id}(id=${student.id})}">
+								<button class="btn btn-info" type="button">Activar</button>
+							</a> 
+							<a th:case="true" th:href="@{/users/desactivarEstudiante/{id}(id=${student.id})}">
+								<button type="button" class="btn btn-danger">Desactivar</button>
+							</a>
+						</div>
+					</td>
 				</tr>
 			</tbody>
 		</table>
