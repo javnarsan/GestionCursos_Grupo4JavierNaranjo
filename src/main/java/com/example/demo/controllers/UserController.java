@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,16 +45,21 @@ public class UserController {
 		return "redirect:/users/listProfesores";
 	}
 	@PostMapping("/addProfesor")
-	public String addProfesor(@ModelAttribute("profesor") UserModel profesorModel,RedirectAttributes flash) {
-		if(profesorModel.getId()==0) {
-			usuarioService.addProfesor(profesorModel);
-			flash.addFlashAttribute("success","Profesor insertado correctamente");
-		}else {
-			usuarioService.updateProfesor(profesorModel);
-			flash.addFlashAttribute("success","Profesor modificado correctamente");
-		}
-		return "redirect:/users/listProfesores";
-	}
+	public String addProfesor(@ModelAttribute("profesor") UserModel profesorModel,RedirectAttributes flash,BindingResult result) {
+		if (result.hasErrors()) {
+			 return FORMPROF_VIEW;
+		 }else {
+			 if(profesorModel.getId()==0) {
+					usuarioService.addProfesor(profesorModel);
+					flash.addFlashAttribute("success","Profesor insertado correctamente");
+				}else {
+					usuarioService.updateProfesor(profesorModel);
+					flash.addFlashAttribute("success","Profesor modificado correctamente");
+				}
+				return "redirect:/users/listProfesores";
+			}
+		 }
+		
 	@GetMapping(value= {"/formProfesor/","/formProfesor/{id}"})
 	public String formProfesor(@PathVariable(name="id",required=false) Integer id,Model model) {
 		if(id==null) 
