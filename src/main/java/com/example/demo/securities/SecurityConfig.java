@@ -22,7 +22,7 @@ public class SecurityConfig {
 		http
 			.authorizeRequests((requests) -> requests
 				.antMatchers("/", "/imgs/*","/photos/","/auth/","/webjars/**",
-						"/css/*","/index/**","/listarEstudiantes/**","/registro/**","/files/*").permitAll().antMatchers("/users/**").hasRole("ADMIN")
+						"/css/*","/index/**","/registro/**","/files/*").permitAll().antMatchers("/users/**").hasRole("ADMIN")
 				.anyRequest().authenticated()
 			)
 			.formLogin((form) -> form

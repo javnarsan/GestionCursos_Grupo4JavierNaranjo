@@ -65,18 +65,14 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public int activarEstudiante(UserModel estuanteModel,int id) {
+	public long activarEstudiante(UserModel estuanteModel,long id) {
 		userRepository.findById(id).get().setEnabled(true);
-		estuanteModel.setEnabled(true);
-		userRepository.save(transform(estuanteModel));
 		return 0;
 	}
 
 	@Override
-	public int desactivarEstudiante(UserModel estuanteModel,int id) {
+	public long desactivarEstudiante(UserModel estuanteModel,long id) {
 		userRepository.findById(id).get().setEnabled(false);
-		estuanteModel.setEnabled(false);
-		userRepository.save(transform(estuanteModel));
 		return 0;
 	}
 
