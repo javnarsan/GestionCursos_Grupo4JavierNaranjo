@@ -1,8 +1,7 @@
 package com.example.demo.models;
 
 public class UserModel {
-	private long id;
-	
+	private long id;	
 	private String email;
 	private String password;
 	private boolean enabled;
