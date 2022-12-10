@@ -25,10 +25,10 @@
 			<ul
 				class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 				<li><a href="/" class="nav-link px-2 link-secondary">Inicio</a></li>
-				<li><a href="#" class="nav-link px-2 link-dark">Profesores</a></li>
-				<li><a href="#" class="nav-link px-2 link-dark">Alumnos</a></li>
-				<li><a href="#" class="nav-link px-2 link-dark">Cursos</a></li>
-				<li><a href="#" class="nav-link px-2 link-dark">Noticias</a></li>
+				<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="/users/listProfesores" class="nav-link px-2 link-dark">Profesores</a></li>
+				<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="#" class="nav-link px-2 link-dark">Alumnos</a></li>
+				<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="/cursos/listCursos" class="nav-link px-2 link-dark">Cursos</a></li>
+				<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="#" class="nav-link px-2 link-dark">Noticias</a></li>
 			</ul>
 
 			<div class="col-md-3 text-end">
