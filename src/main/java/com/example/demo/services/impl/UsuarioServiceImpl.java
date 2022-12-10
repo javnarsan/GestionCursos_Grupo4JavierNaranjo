@@ -62,4 +62,20 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return transform(userRepository.findById(id).orElse(null));
 	}
 
+	@Override
+	public int activarEstudiante(UserModel estuanteModel,int id) {
+		userRepository.findById(id).get().setEnabled(true);
+		estuanteModel.setEnabled(true);
+		userRepository.save(transform(estuanteModel));
+		return 0;
+	}
+
+	@Override
+	public int desactivarEstudiante(UserModel estuanteModel,int id) {
+		userRepository.findById(id).get().setEnabled(false);
+		estuanteModel.setEnabled(false);
+		userRepository.save(transform(estuanteModel));
+		return 0;
+	}
+
 }

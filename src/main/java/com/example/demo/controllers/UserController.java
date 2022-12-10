@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +41,7 @@ public class UserController {
 		if(usuarioService.removeProfesor(id)==0) 
 			flash.addFlashAttribute("success","Profesor eliminado correctamente");
 		else 
-			flash.addFlashAttribute("error","No de ha podido eliminar al profesor");
+			flash.addFlashAttribute("error","No se ha podido eliminar al profesor");
 		return "redirect:/users/listProfesores";
 	}
 	@PostMapping("/addProfesor")
@@ -68,6 +69,24 @@ public class UserController {
 		ModelAndView mav = new ModelAndView(STUDENTS_VIEW);
 		mav.addObject("student",usuarioService.listAllStudents());
 		return mav;
+	}
+	
+	@GetMapping("/activarEstudiante/{id}")
+	public String activarEstudiante(User user,@PathVariable("id") int id,RedirectAttributes flash) {
+		if(user.isEnabled()) 
+			flash.addFlashAttribute("success","Estudiante activado correctamente");
+		else 
+			flash.addFlashAttribute("error","No se ha podido activar el estudiante");
+		return "redirect:/users/listarEstudiantes";
+	}
+	
+	@GetMapping("/desactivarEstudiante/{id}")
+	public String desactivarEstudiante(User user,@PathVariable("id") int id,RedirectAttributes flash) {
+		if(!user.isEnabled()) 
+			flash.addFlashAttribute("success","Estudiante desactivado correctamente");
+		else 
+			flash.addFlashAttribute("error","No se ha podido desactivar el estudiante");
+		return "redirect:/users/listarEstudiantes";
 	}
 	
 }

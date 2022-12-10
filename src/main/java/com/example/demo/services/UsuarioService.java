@@ -14,5 +14,7 @@ public interface UsuarioService {
 	public abstract UserModel findProfesor(long id);
 	public abstract User transform(UserModel userModel);
 	public abstract UserModel transform(User user);
+	public abstract int activarEstudiante(UserModel estudiante,int id);
+	public abstract int desactivarEstudiante(UserModel estudiante,int id);
 	
 }
