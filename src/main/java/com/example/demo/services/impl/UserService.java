@@ -29,10 +29,11 @@ public class UserService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		com.example.demo.entities.User usuario=userRepository.findByEmail(email);
-		System.err.print(usuario.getEmail().toString());
-		System.err.print(usuario.getPassword().toString());
 		UserBuilder builder=null;
 		UserDetails user=null;
+		if(usuario==null) {
+			return user;
+		}
 		if(email!=null) {
 			//forma para usar email como usuario en el login
 			user= User.withUsername(usuario.getEmail()).password(usuario.getPassword()).disabled(false).authorities(usuario.getRole()).build();
