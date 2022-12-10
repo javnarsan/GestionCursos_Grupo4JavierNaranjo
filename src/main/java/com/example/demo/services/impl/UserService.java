@@ -38,7 +38,7 @@ public class UserService implements UserDetailsService{
 			//forma para usar email como usuario en el login
 			user= User.withUsername(usuario.getEmail()).password(usuario.getPassword()).disabled(false).authorities(usuario.getRole()).build();
 			/*builder=User.builder().authorities(email);
-			builder.disabled(false);
+			builder.disabled(false):
 			builder.password(usuario.getPassword());
 			builder.authorities(new SimpleGrantedAuthority(usuario.getRole()));*/
 		}

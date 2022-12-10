@@ -54,14 +54,21 @@ public class UserController {
 		if (result.hasErrors()) {
 			 return FORMPROF_VIEW;
 		 }else {
-			 if(profesorModel.getId()==0) {
-					usuarioService.addProfesor(profesorModel);
-					flash.addFlashAttribute("success","Profesor insertado correctamente");
-				}else {
-					usuarioService.updateProfesor(profesorModel);
-					flash.addFlashAttribute("success","Profesor modificado correctamente");
-				}
-				return "redirect:/users/listProfesores";
+			 try {
+				 if(profesorModel.getId()==0) {
+					 
+						usuarioService.addProfesor(profesorModel);
+						flash.addFlashAttribute("success","Profesor insertado correctamente");
+					}else {
+						usuarioService.updateProfesor(profesorModel);
+						flash.addFlashAttribute("success","Profesor modificado correctamente");
+					}
+					return "redirect:/users/listProfesores"; 
+			 }catch(Exception e) {
+				 flash.addFlashAttribute("success","Email duplicado");
+				 return FORMPROF_VIEW;
+			 }
+			
 			}
 		 }
 		
