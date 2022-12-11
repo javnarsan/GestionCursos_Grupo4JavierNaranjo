@@ -9,6 +9,7 @@ public interface UsuarioService {
 	public abstract int removeProfesor(long id);
 	public abstract User addProfesor(UserModel profesorModel);
 	public abstract User updateProfesor(UserModel profesorModel);
+	public abstract User updateAlumno(UserModel alumnoModel);
 	public abstract UserModel findProfesor(long id);
 	public abstract User transform(UserModel userModel);
 	public abstract UserModel transform(User user);

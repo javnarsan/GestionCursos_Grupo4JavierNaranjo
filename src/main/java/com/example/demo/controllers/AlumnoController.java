@@ -27,21 +27,21 @@ public class AlumnoController {
 	private UsuarioService usuarioService;
 
 	@GetMapping(value = { "/formPersonal/{email}" })
-	public String formProfesor(@PathVariable(name = "id", required = false) String email, Model model) {
+	public String formProfesor(@PathVariable(name = "email", required = false) String email, Model model) {
 		model.addAttribute("personal", usuarioService.findUserByEmail(email));
 		return FORMPERSONAL_VIEW;
 	}
 
 	@PostMapping("/addPersonal")
-	public String addProfesor(@ModelAttribute("profesor") UserModel profesorModel, RedirectAttributes flash,
+	public String addPersonal(@ModelAttribute("personal") UserModel personalModel, RedirectAttributes flash,
 			BindingResult result) {
 		if (result.hasErrors()) {
 			return FORMPERSONAL_VIEW;
 		} else {
-			usuarioService.updateProfesor(profesorModel);
-			flash.addFlashAttribute("success", "Profesor modificado correctamente");
+			usuarioService.updateAlumno(personalModel);
+			flash.addFlashAttribute("success", "Perfil modificado exitosamente");
 		}
-		return "redirect:/admin/listProfesores";
+		return "redirect:/";
 
 	}
 }

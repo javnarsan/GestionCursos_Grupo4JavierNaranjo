@@ -109,5 +109,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public User findUserByEmail(String email) {
 		return userRepository.findUserByEmail(email);
 	}
+
+	@Override
+	public User updateAlumno(UserModel alumnoModel) {
+		alumnoModel.setRole("ROLE_ALUMNO");
+		alumnoModel.setPassword(UserService.passwordEncoder().encode(alumnoModel.getPassword()));
+		return userRepository.save(transform(alumnoModel));
+	}
 	
 }
