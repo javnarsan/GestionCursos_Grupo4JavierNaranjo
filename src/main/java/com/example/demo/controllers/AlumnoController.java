@@ -21,18 +21,20 @@ import com.example.demo.services.UsuarioService;
 @PreAuthorize("hasRole('ROLE_ALUMNO')")
 @RequestMapping("/alumno")
 public class AlumnoController {
-	private static final String FORMPERSONAL_VIEW = "formPersonal";
+	private static final String FORMPERSONAL_VIEW = "formPersonalAlumno";
 
 	@Autowired
 	@Qualifier("usuarioService")
 	private UsuarioService usuarioService;
-
+	
+	@PreAuthorize("#email==authentication.name")
 	@GetMapping(value = { "/formPersonal/{email}" })
 	public String formProfesor(@PathVariable(name = "email", required = false) String email, Model model) {
 		model.addAttribute("personal", usuarioService.findUserByEmail(email));
 		return FORMPERSONAL_VIEW;
 	}
 
+	@PreAuthorize("#personalModel.email==authentication.name")
 	@PostMapping("/addPersonal")
 	public String addPersonal(@ModelAttribute("personal") UserModel personalModel, RedirectAttributes flash,
 			BindingResult result) {
@@ -42,7 +44,7 @@ public class AlumnoController {
 			usuarioService.updateAlumno(personalModel);
 			flash.addFlashAttribute("success", "Perfil modificado exitosamente");
 		}
-		return "redirect:/auth/login?error";
+		return "redirect:/";
 
 	}
 }
