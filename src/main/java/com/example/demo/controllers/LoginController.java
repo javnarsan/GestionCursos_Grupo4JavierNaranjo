@@ -51,7 +51,7 @@ public class LoginController {
 				 if (userService.loadUserByUsername(user.getEmail()) == null) {
 					 userService.registrar(user);
 					 flash.addFlashAttribute("success", "Usuario registrado correctamente!");
-					 return "redirect:/loguearse"; 
+					 return "redirect:/auth/login"; 
 				 }else {
 					 flash.addFlashAttribute("success", "Email duplicado");
 					 return "redirect:/registro"; 
