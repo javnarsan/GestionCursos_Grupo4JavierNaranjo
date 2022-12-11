@@ -1,5 +1,10 @@
 package com.example.demo.controllers;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entities.User;
@@ -43,12 +49,26 @@ public class LoginController {
 			return "registro";
 		}
 		@PostMapping("/registro")
-		public String register(@Valid @ModelAttribute User user,BindingResult result,RedirectAttributes flash) {
+		public String register(@Valid @ModelAttribute User user,BindingResult result,RedirectAttributes flash,@RequestParam("file") MultipartFile foto) {
 			 if (result.hasErrors()) {			
 				 return "registro";
 			 }
 			 else {
 				 if (userService.loadUserByUsername(user.getEmail()) == null) {
+					 if(!foto.isEmpty()) {
+						 Path directorioImagenes=Paths.get("src//main//resources//static/imgs");
+						 String rutaAbsoluta=directorioImagenes.toFile().getAbsolutePath();
+						 try {
+							byte[] bytesfoto=foto.getBytes();
+							Path rutaCompleta=Paths.get(rutaAbsoluta+"//"+foto.getOriginalFilename());
+							Files.write(rutaCompleta, bytesfoto);
+						} catch (IOException e) {
+							System.err.print("Ha ocurrido un error");
+							e.printStackTrace();
+						}
+						 
+					 }
+					 user.setFoto(foto.getOriginalFilename());
 					 userService.registrar(user);
 					 flash.addFlashAttribute("success", "Usuario registrado correctamente!");
 					 return "redirect:/auth/login"; 
