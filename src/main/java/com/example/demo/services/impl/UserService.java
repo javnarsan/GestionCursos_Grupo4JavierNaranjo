@@ -14,9 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.example.demo.models.UserModel;
 import com.example.demo.repositories.UserRepository;
-import com.example.demo.services.UsuarioService;
 
 
 
@@ -26,28 +24,21 @@ public class UserService implements UserDetailsService{
 	@Qualifier("userRepository")
 	private UserRepository userRepository;
 
-	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		com.example.demo.entities.User usuario=userRepository.findByEmail(email);
-		UserBuilder builder=null;
-		UserDetails user=null;
-		if(usuario==null) {
-			return user;
-		}
-		if(email!=null) {
-			//forma para usar email como usuario en el login
-			user= User.withUsername(usuario.getEmail()).password(usuario.getPassword()).disabled(false).authorities(usuario.getRole()).build();
-			/*builder=User.builder().authorities(email);
-			builder.disabled(false):
-			builder.password(usuario.getPassword());
-			builder.authorities(new SimpleGrantedAuthority(usuario.getRole()));*/
-		}
-		else 
-			throw new UsernameNotFoundException("Usuario no encontrado");
-			
-		return user;
-		
-	}
+		@Override
+		public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+			 com.example.demo.entities.User usuario = userRepository.findByEmail(email);
+				UserBuilder builder = null;
+
+				if(usuario != null) {
+					builder = User.withUsername(email);
+					builder.disabled(false);
+					builder.password(usuario.getPassword());
+					builder.authorities(usuario.getRole());
+				}else {
+					throw new UsernameNotFoundException("Usuario no encontrado");
+				}
+				return builder.build();
+			}
 
 	@Bean
 	public static  PasswordEncoder passwordEncoder() {

@@ -41,7 +41,7 @@
 					</td>
 					<td>
 						<form style="display: inline-block;" th:action="@{/admin/borrarEstudiante/{id}(id=${student.id})}" method="PUT">
-							<button onclick="confirm('Estás seguro que deseas eliminar el estudiante?');" type="submit" class="btn btn-danger">Borrar</button>
+							<button th:data-confirm-delete="|Estas seguro de que quieres eliminar al estudiante ${student.nombre}?|" th:onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false" type="submit" class="btn btn-danger">Borrar</button>
 						</form>
 						<form style="display: inline-block;" th:if="${student.enabled == false}" th:action="@{/admin/activarEstudiante/{id}(id=${student.id})}" method="POST">
 							<button type="submit" class="btn btn-success">Activar</button>
