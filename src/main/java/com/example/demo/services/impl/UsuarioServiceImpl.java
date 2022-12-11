@@ -104,5 +104,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 		return Existe;
 	}
+
+	@Override
+	public User findUserByEmail(String email) {
+		return userRepository.findUserByEmail(email);
+	}
 	
 }

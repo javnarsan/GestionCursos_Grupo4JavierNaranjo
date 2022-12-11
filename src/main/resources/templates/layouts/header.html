@@ -29,7 +29,7 @@
 				<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="/admin/listarEstudiantes" class="nav-link px-2 link-dark">Alumnos</a></li>
 				<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="/cursos/listCursos" class="nav-link px-2 link-dark">Cursos</a></li>
 				<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="#" class="nav-link px-2 link-dark">Noticias</a></li>
-				<li><a sec:authorize="hasRole('ROLE_ALUMNO')" href="/alumno/formPersonal/" class="nav-link px-2 link-dark">Editar Perfil</a></li>
+				<li><a sec:authorize="hasRole('ROLE_ALUMNO')" th:href="@{/alumno/formPersonal/}+${#authentication.name}" class="nav-link px-2 link-dark">Editar Perfil</a></li>
 			</ul>
 
 			<div class="col-md-3 text-end">

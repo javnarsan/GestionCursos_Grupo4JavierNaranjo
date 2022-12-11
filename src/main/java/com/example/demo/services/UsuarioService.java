@@ -13,6 +13,7 @@ public interface UsuarioService {
 	public abstract User transform(UserModel userModel);
 	public abstract UserModel transform(User user);
 	public abstract User findUserById(long id);
+	public abstract User findUserByEmail(String email);
 	public abstract User activarEstudiante(UserModel userModel);
 	public abstract User desactivarEstudiante(UserModel usuarioModel);
 	public abstract void borrarEstudiante(int id);
