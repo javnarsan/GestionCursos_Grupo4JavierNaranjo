@@ -33,7 +33,7 @@ public class AlumnoController {
 		return FORMPERSONAL_VIEW;
 	}
 
-	@PutMapping("/addPersonal")
+	@PostMapping("/addPersonal")
 	public String addPersonal(@ModelAttribute("personal") UserModel personalModel, RedirectAttributes flash,
 			BindingResult result) {
 		if (result.hasErrors()) {
@@ -42,7 +42,7 @@ public class AlumnoController {
 			usuarioService.updateAlumno(personalModel);
 			flash.addFlashAttribute("success", "Perfil modificado exitosamente");
 		}
-		return "redirect:/";
+		return "redirect:/auth/login?error";
 
 	}
 }
