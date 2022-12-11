@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entities.User;
+import com.example.demo.services.UsuarioService;
 import com.example.demo.services.impl.UserService;
 
 @Controller
@@ -27,6 +28,9 @@ public class LoginController {
 		@Autowired
 		@Qualifier("userService")
 		private UserService userService;
+		@Autowired
+		@Qualifier("usuarioService")
+		private UsuarioService usuarioService;
 		@GetMapping("/auth/login")
 		public String login(Model model,@RequestParam(name="error",required=false) String error,
 				@RequestParam(name="logout",required=false) String logout) {
@@ -54,7 +58,7 @@ public class LoginController {
 				 return "registro";
 			 }
 			 else {
-				 if (userService.loadUserByUsername(user.getEmail()) == null) {
+				 if (!usuarioService.existeEmail(user.getEmail())) {
 					 if(!foto.isEmpty()) {
 						 Path directorioImagenes=Paths.get("src//main//resources//static/imgs");
 						 String rutaAbsoluta=directorioImagenes.toFile().getAbsolutePath();

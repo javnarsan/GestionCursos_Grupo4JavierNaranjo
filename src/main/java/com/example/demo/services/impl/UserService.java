@@ -1,5 +1,8 @@
 package com.example.demo.services.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +14,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.models.UserModel;
 import com.example.demo.repositories.UserRepository;
 
 
@@ -47,5 +52,4 @@ public class UserService implements UserDetailsService{
 		user.setRole("ROLE_ALUMNO");
 		return userRepository.save(user);
 	}
-
 }

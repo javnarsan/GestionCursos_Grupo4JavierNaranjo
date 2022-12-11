@@ -16,5 +16,6 @@ public interface UsuarioService {
 	public abstract User activarEstudiante(UserModel userModel);
 	public abstract User desactivarEstudiante(UserModel usuarioModel);
 	public abstract void borrarEstudiante(int id);
+	public abstract boolean existeEmail(String email);
 	
 }

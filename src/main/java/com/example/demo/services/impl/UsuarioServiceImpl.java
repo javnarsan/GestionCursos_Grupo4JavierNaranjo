@@ -1,5 +1,6 @@
 package com.example.demo.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,26 +12,29 @@ import com.example.demo.entities.User;
 import com.example.demo.models.UserModel;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.UsuarioService;
+
 @Service("usuarioService")
-public class UsuarioServiceImpl implements UsuarioService{
+public class UsuarioServiceImpl implements UsuarioService {
 	@Autowired
 	@Qualifier("userRepository")
 	private UserRepository userRepository;
+
 	@Override
 	public List<UserModel> listAllProfesores() {
 		// TODO Auto-generated method stub
-		return userRepository.findAll().stream().filter(c->"ROLE_PROFESOR".equals(c.getRole())).map(c->transform(c)).collect(Collectors.toList());
+		return userRepository.findAll().stream().filter(c -> "ROLE_PROFESOR".equals(c.getRole())).map(c -> transform(c))
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public User transform(UserModel userModel) {
-		ModelMapper modelMapper=new ModelMapper();
+		ModelMapper modelMapper = new ModelMapper();
 		return modelMapper.map(userModel, User.class);
 	}
 
 	@Override
 	public UserModel transform(User user) {
-		ModelMapper modelMapper=new ModelMapper();
+		ModelMapper modelMapper = new ModelMapper();
 		return modelMapper.map(user, UserModel.class);
 	}
 
@@ -42,8 +46,10 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public List<UserModel> listAllStudents() {
-		return userRepository.findAll().stream().filter(c->"ROLE_ALUMNO".equals(c.getRole())).map(c->transform(c)).collect(Collectors.toList());
+		return userRepository.findAll().stream().filter(c -> "ROLE_ALUMNO".equals(c.getRole())).map(c -> transform(c))
+				.collect(Collectors.toList());
 	}
+
 	@Override
 	public User addProfesor(UserModel profesorModel) {
 		profesorModel.setRole("ROLE_PROFESOR");
@@ -62,7 +68,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 	public UserModel findProfesor(long id) {
 		return transform(userRepository.findById(id).orElse(null));
 	}
-	
+
 	@Override
 	public User findUserById(long id) {
 		return userRepository.findUserById(id);
@@ -86,4 +92,17 @@ public class UsuarioServiceImpl implements UsuarioService{
 		userRepository.delete(usuario);
 	}
 
+	@Override
+	public boolean existeEmail(String email) {
+		boolean Existe=false;
+		List<UserModel> listaAlumnos = userRepository.findAll().stream().map(c -> transform(c)).collect(Collectors.toList());
+		for (UserModel usermodel : listaAlumnos) {
+			if (usermodel.getEmail().equals(email)) {
+				Existe = true;
+				break;
+			}
+		}
+		return Existe;
+	}
+	
 }
