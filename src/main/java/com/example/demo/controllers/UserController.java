@@ -33,7 +33,7 @@ public class UserController {
 	@GetMapping("/listProfesores")
 	public ModelAndView listCourses() {
 		ModelAndView mav=new ModelAndView(Profesores_VIEW);
-		
+		mav.addObject("titulo", "Control Profesores");
 		mav.addObject("profesores",usuarioService.listAllProfesores());
 		return mav;
 	}
@@ -80,7 +80,7 @@ public class UserController {
 	@GetMapping("/listarEstudiantes")
 	public ModelAndView listStudents() {
 		ModelAndView mav = new ModelAndView(STUDENTS_VIEW);
-		mav.addObject("titulo", "Control Usuarios");
+		mav.addObject("titulo", "Control Estudiantes");
 		mav.addObject("student",usuarioService.listAllStudents());
 		return mav;
 	}

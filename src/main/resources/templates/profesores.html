@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="layouts/header :: head(~{::title})">
-		<meta charset="ISO-8859-1">
-		<title>Profesores</title>
-	</head>
-	<body>
-		<table class="table table-striped table-bordered"> 
-			<thead class="thead-light"> 
+<head th:replace="layouts/header :: head(~{::title})">
+<title>Profesores</title>
+</head>
+<body>
+	<div class="container" th:replace="layouts/menu :: menu"></div>
+
+	<div class="container">
+		<div class="Row">
+			<h2>Lista de Profesores</h2>
+		</div>
+		<table class="table table-striped table-bordered">
+			<thead class="thead-light">
 				<tr>
-					<th>Nombre</th> 
-					<th>Apellidos</th> 
-					<th>Email</th> 
-				</tr> 
+					<th>Nombre</th>
+					<th>Apellidos</th>
+					<th>Email</th>
+				</tr>
 			</thead>
-			<tbody th:each="profesor: ${profesores}"> 
+			<tbody th:each="profesor: ${profesores}">
 				<tr>
-					<th th:text=${profesor.nombre}></th> 
-					<th th:text=${profesor.apellidos}></th> 
-					<th th:text=${profesor.email}></th> 
-					<th> 
+					<th th:text=${profesor.nombre}></th>
+					<th th:text=${profesor.apellidos}></th>
+					<th th:text=${profesor.email}></th>
+					<th>
 						<a th:href="@{/users/formProfesor/}+${profesor.id}">
-						<button type="button" class="btn btn-primary btm-sm">Edit</button> 
+							<button type="button" class="btn btn-primary">Edit</button>
 						</a> 
-						<a th:href="@{/users/deleteProfesor/}+${profesor.id}"> 
-						<button type="button" class="btn btn-danger btm-sm">Delete</button>
+						<a th:href="@{/users/deleteProfesor/}+${profesor.id}">
+							<button type="button" class="btn btn-danger">Delete</button>
 						</a>
-					</th> 
-				</tr> 
-			</tbody> 
+					</th>
+				</tr>
+			</tbody>
 		</table>
-		<div class="alert alert-success" th:if="${success!=null}" th:text="${success}"></div>
-		<a th:href="@{/users/formProfesor/}" >
-						<button type="button" class="btn btn-success btm-sm">Create</button> 
-						</a> 
-	</body>
-	 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-      <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-      <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-      
+		<div class="alert alert-success" th:if="${success!=null}"
+			th:text="${success}"></div>
+		<a th:href="@{/users/formProfesor/}">
+			<button type="button" class="btn btn-success btm-sm">Create</button>
+		</a>
+	</div>
+</body>
 </html>

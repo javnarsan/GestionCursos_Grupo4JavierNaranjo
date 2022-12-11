@@ -14,19 +14,10 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-md bg-light navbar-light">
-		<a class="navbar-brand" th:href="@{/}">Administración</a>
-		<!-- Links -->
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-			<ul class="navbar-nav">
-				<a class="nav-link" th:href="@{/students}"><li class="nav-item">Control
-					de estudiantes</li></a>
-			</ul>
-		</div>
-	</nav>
+	<div class="container" th:replace="layouts/menu :: menu"></div>
 	<div class="container">
 		<div class="Row">
-			<h2>Lista de estudiantes</h2>
+			<h2>Lista de Estudiantes</h2>
 		</div>
 		<table class="table table-striped table-bordered">
 			<thead class="table-light">
