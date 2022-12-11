@@ -17,7 +17,7 @@
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
                             	<label for="fname">Nombre</label>
-                                <input id="fname" th:field="*{nombre}" name="name" type="text" placeholder="Nombre" class="form-control">
+                                <input id="fname" th:field="*{nombre}" name="name"  minlength="2" maxlength="40" type="text" placeholder="Nombre" class="form-control">
                                 <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
                             	<label for="descripcion">Descripcion</label>
-                                <input id="descripcion" th:field="*{descripcion}" name="name" type="text" placeholder="Descripcion" class="form-control">
+                                <input id="descripcion" th:field="*{descripcion}" name="name" minlength="2" maxlength="100" type="text" placeholder="Descripcion" class="form-control">
                                 <small class="form-text text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></small>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
                             	<label for="fechaInicio">Fecha de inicio (MM/dd/aaaa)</label>
-                                <input id="fechaInicio" th:text="${#dates.format(curso.fechaInicio, 'dd/MM/yyyy')}" name="fechaInicio" class="form-control">
+                                <input id="fechaInicio" th:text="${#dates.format(curso.fechaInicio, 'dd/MM/yyyy')}" required pattern="\d{2}/\d{2}/\d{4}" name="fechaInicio" class="form-control">
                                 <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></small>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
                             	<label for="fechaFin">Fecha de fin (MM/dd/aaaa)</label>
-                                <input id="fechaFin" th:text="${#dates.format(curso.fechaFin, 'dd/MM/yyyy')}" name="fechaFin" class="form-control">
+                                <input id="fechaFin" th:text="${#dates.format(curso.fechaFin, 'dd/MM/yyyy')}" required pattern="\d{2}/\d{2}/\d{4}" name="fechaFin" class="form-control">
                                 <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}"></small>
                             </div>
                         </div>
@@ -62,12 +62,8 @@
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
                             	<label for="profesor">Elige profesor</label>
-                                <!-- <input id="nivel" th:field="*{nivel}" name="name" type="number" placeholder="nivel" class="form-control">
-                                <small class="form-text text-danger" th:if="${#fields.hasErrors('nivel')}" th:errors="*{nivel}"></small> -->
-                                <select class="form-control selectpicker" th:field="*{profesor.id}" id="profesor">
-                                	<option th:each="profesor:${profesores}" th:value="${profesor.id}" th:text="${profesor.nombre}">
-                                	</option>
-                                </select>
+                                <input id="nivel" th:field="*{nivel}" name="name" type="number" placeholder="nivel" class="form-control">
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('nivel')}" th:errors="*{nivel}"></small>
                             </div>
                         </div>
                         
