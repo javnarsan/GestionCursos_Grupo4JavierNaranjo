@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo.entities.User;
 import com.example.demo.models.UserModel;
 import com.example.demo.services.UsuarioService;
 
@@ -35,8 +38,9 @@ public class ProfesorController {
 	}
 	@PreAuthorize("#personalModel.email==authentication.name")
 	@PostMapping("/addPersonal")
-	public String addPersonal(@ModelAttribute("personal") UserModel personalModel, RedirectAttributes flash,
+	public String addPersonal(@Valid @ModelAttribute("user") User user, @ModelAttribute("personal") UserModel personalModel, RedirectAttributes flash,
 			BindingResult result) {
+		System.out.println(result);
 		if (result.hasErrors()) {
 			return FORMPERSONAL_VIEW;
 		} else {

@@ -31,12 +31,14 @@ public class UserService implements UserDetailsService{
 			 com.example.demo.entities.User usuario = userRepository.findUserByEmail(email);
 				UserBuilder builder = null;
 
-				if(usuario != null) {
+				if(usuario != null && usuario.isEnabled()==true) {
+					System.out.println("Estado de usuario: "+usuario.isEnabled());
 					builder = User.withUsername(email);
 					builder.disabled(false);
 					builder.password(usuario.getPassword());
 					builder.authorities(usuario.getRole());
 				}else {
+					
 					throw new UsernameNotFoundException("Usuario no encontrado");
 				}
 				return builder.build();

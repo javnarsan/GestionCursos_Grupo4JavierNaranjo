@@ -5,14 +5,20 @@
 <title>Insert title here</title>
 </head>
 <body th:fragment="menu">
+	<p th:fragment="sesion" sec:authorize="isAuthenticated()" class="nav-item">
+		<small class="nav-link" th:text="'Hola '+${#authentication.name}"></small>
+	<p>
 	<nav class="navbar navbar-expand-md bg-light navbar-light">
 		<a class="navbar-brand" th:href="@{/}">Administración</a>
 		<!-- Links -->
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav">
-				<a class="nav-link" th:href="@{/admin/listProfesores}"><li class="nav-item">Control Profesores</li></a>
-				<a class="nav-link" th:href="@{/admin/listarEstudiantes}"><li class="nav-item">Control Estudiantes</li></a>
-				<a class="nav-link" th:href="@{/cursos/listCursos}"><li class="nav-item">Control Cursos</li></a>
+				<a class="nav-link" th:href="@{/admin/listProfesores}"><li
+					class="nav-item">Control Profesores</li></a>
+				<a class="nav-link" th:href="@{/admin/listarEstudiantes}"><li
+					class="nav-item">Control Estudiantes</li></a>
+				<a class="nav-link" th:href="@{/cursos/listCursos}"><li
+					class="nav-item">Control Cursos</li></a>
 			</ul>
 		</div>
 	</nav>

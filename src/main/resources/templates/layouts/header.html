@@ -38,9 +38,7 @@
 				<a sec:authorize="!isAuthenticated()" th:href="@{/registro}"><button type="button" class="btn btn-primary">Registrar</button></a>
 			</div>
 			<div class="col-md-3 text-start">
-				<p sec:authorize="isAuthenticated()" class="nav-item">
-					<small class="nav-link" th:text="'Hola '+${#authentication.name}"></small>
-				</p>
+				<p th:replace="layouts/connect :: sesion"></p>
 				<form class="form-inline" th:action="@{/auth/login}" method="post">
 					<button sec:authorize="isAuthenticated()" class="btn btn-success" type="submit">Cerrar sesión</button>
 				</form>
