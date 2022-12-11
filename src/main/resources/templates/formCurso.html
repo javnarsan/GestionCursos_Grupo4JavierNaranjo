@@ -16,6 +16,7 @@
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
+                            	<label for="fname">Nombre</label>
                                 <input id="fname" th:field="*{nombre}" name="name" type="text" placeholder="Nombre" class="form-control">
                                 <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
                             </div>
@@ -24,8 +25,45 @@
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
-                                <input id="lname" th:field="*{descripcion}" name="name" type="text" placeholder="Descripcion" class="form-control">
+                            	<label for="descripcion">Descripcion</label>
+                                <input id="descripcion" th:field="*{descripcion}" name="name" type="text" placeholder="Descripcion" class="form-control">
                                 <small class="form-text text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></small>
+                            </div>
+                        </div>
+						<br/>
+						<div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                            	<label for="nivel">Nivel</label>
+                                <input id="nivel" th:field="*{nivel}" name="name" type="number" placeholder="nivel" class="form-control">
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('nivel')}" th:errors="*{nivel}"></small>
+                            </div>
+                        </div>
+						<br/>
+						<div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                            	<label for="fechaInicio">Fecha de inicio</label>
+                                <input id="fechaInicio" th:field="*{fechaInicio}" name="name" type="date" class="form-control">
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></small>
+                            </div>
+                        </div>
+						<br/>
+						<div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                            	<label for="fechaFin">Fecha de fin</label>
+                                <input id="fechaFin" th:field="*{fechaFin}" name="name" type="date" class="form-control">
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}"></small>
+                            </div>
+                        </div>
+						<br/>
+						<div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                            	<label for="profesor">Profesor</label>
+                                <input id="nivel" th:field="*{nivel}" name="name" type="number" placeholder="nivel" class="form-control">
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('nivel')}" th:errors="*{nivel}"></small>
                             </div>
                         </div>
 						<br/>

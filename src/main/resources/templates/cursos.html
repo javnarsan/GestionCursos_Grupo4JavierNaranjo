@@ -15,23 +15,35 @@
 				<tr>
 					<th>Nombre</th>
 					<th>Descripcion</th>
+					<th>Nivel</th>
+					<th>Fecha de inicio</th>
+					<th>Fecha de inicio</th>
+					<!-- <th>Profesor</th> -->
+					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tbody th:each="curso: ${cursos}">
 				<tr>
 					<th th:text=${curso.nombre}></th>
 					<th th:text=${curso.descripcion}></th>
+					<th th:text=${curso.nivel}></th>
+					<th th:text=${curso.fechaInicio}></th>
+					<th th:text=${curso.fechaFin}></th>
+					<!-- <th th:text=${curso.profesor}></th> --> 
 					<th><a th:href="@{/cursos/formCurso/}+${curso.id}">
 							<button type="button" class="btn btn-primary">Edit</button>
-					</a> <a th:href="@{/cursos/deleteCurso/}+${curso.id}">
+						</a>
+						<a th:data-confirm-delete="|Estas seguro de que quieres eliminar el curso ${curso.nombre}?|" th:onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false" th:href="@{/cursos/deleteCurso/}+${curso.id}">
 							<button type="button" class="btn btn-danger">Delete</button>
-					</a></th>
+						</a>
+					</th>
 				</tr>
 			</tbody>
 		</table>
+		<div class="alert alert-success" th:if="${success!=null}"
+			th:text="${success}"></div>
 		<a th:href="@{/cursos/formCurso/}">
-			<button type="button" class="btn btn-success">Crear
-				curso</button>
+			<button type="button" class="btn btn-success">Crear curso</button>
 		</a>
 	</div>
 </body>

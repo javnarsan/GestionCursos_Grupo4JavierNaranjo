@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,9 +20,9 @@ public class CursoModel {
 	private String nombre;
 	private String descripcion;
 	private int nivel;
-	private User usuario;
-	private String fechaInicio;
-	private String fechaFin;
+	private User profesor;
+	private Date fechaInicio;
+	private Date fechaFin;
 	private List<Comentario> comentarios;
 	private List<Matricula> matriculas;
 	public CursoModel() {
@@ -29,13 +30,13 @@ public class CursoModel {
 		// TODO Auto-generated constructor stub
 	}
 	public CursoModel(int id, String nombre, String descripcion, int nivel, User usuario,
-			String fechaInicio, String fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
+			Date fechaInicio, Date fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.nivel = nivel;
-		this.usuario = usuario;
+		this.profesor = usuario;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.comentarios = comentarios;
@@ -66,21 +67,21 @@ public class CursoModel {
 		this.nivel = nivel;
 	}
 	public User getUsuario() {
-		return usuario;
+		return profesor;
 	}
 	public void setUsuario(User usuario) {
-		this.usuario = usuario;
+		this.profesor = usuario;
 	}
-	public String getFechaInicio() {
+	public Date getFechaInicio() {
 		return fechaInicio;
 	}
-	public void setFechaInicio(String fechaInicio) {
+	public void setFechaInicio(Date fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	public String getFechaFin() {
+	public Date getFechaFin() {
 		return fechaFin;
 	}
-	public void setFechaFin(String fechaFin) {
+	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 	public List<Comentario> getComentarios() {
