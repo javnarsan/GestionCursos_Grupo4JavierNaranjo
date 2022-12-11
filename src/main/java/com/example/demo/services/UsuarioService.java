@@ -1,8 +1,6 @@
 package com.example.demo.services;
 
 import java.util.List;
-
-
 import com.example.demo.entities.User;
 import com.example.demo.models.UserModel;
 public interface UsuarioService {
@@ -14,7 +12,9 @@ public interface UsuarioService {
 	public abstract UserModel findProfesor(long id);
 	public abstract User transform(UserModel userModel);
 	public abstract UserModel transform(User user);
-	public abstract long activarEstudiante(UserModel estudiante,long id);
-	public abstract long desactivarEstudiante(UserModel estudiante,long id);
+	public abstract User findUserById(long id);
+	public abstract User activarEstudiante(UserModel userModel);
+	public abstract User desactivarEstudiante(UserModel usuarioModel);
+	public abstract void borrarEstudiante(int id);
 	
 }

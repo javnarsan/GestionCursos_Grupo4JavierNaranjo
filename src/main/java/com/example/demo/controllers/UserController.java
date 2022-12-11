@@ -1,20 +1,16 @@
 package com.example.demo.controllers;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.demo.models.UserModel;
@@ -84,20 +80,29 @@ public class UserController {
 	@GetMapping("/listarEstudiantes")
 	public ModelAndView listStudents() {
 		ModelAndView mav = new ModelAndView(STUDENTS_VIEW);
+		mav.addObject("titulo", "Control Usuarios");
 		mav.addObject("student",usuarioService.listAllStudents());
 		return mav;
 	}
 	
-	@GetMapping("/activarEstudiante/{id}")
-	public String activarEstudiante(UserModel userModel,@PathVariable("id") long id,RedirectAttributes flash) {
-		usuarioService.activarEstudiante(userModel, id);
+	@PostMapping("/activarEstudiante/{id}")
+	public String activeUser(Model model, @PathVariable(name="id")long id) {
+		com.example.demo.entities.User usuario = usuarioService.findUserById(id);
+		model.addAttribute("usuario",usuarioService.activarEstudiante(usuarioService.transform(usuario)));
 		return "redirect:/users/listarEstudiantes";
 	}
 	
-	@GetMapping("/desactivarEstudiante/{id}")
-	public String desactivarEstudiante(UserModel userModel,@PathVariable("id") long id,RedirectAttributes flash) {
-		usuarioService.desactivarEstudiante(userModel, id);	
+	@PostMapping("/desactivarEstudiante/{id}")
+	public String deactiveUser(Model model, @PathVariable(name="id")long id) {
+		com.example.demo.entities.User usuario = usuarioService.findUserById(id);
+		model.addAttribute("usuario",usuarioService.desactivarEstudiante(usuarioService.transform(usuario)));
 		return "redirect:/users/listarEstudiantes";
 	}
-	 	
+	
+	@GetMapping("/borrarEstudiante/{id}")
+	public String borrarEstudiante(Model model, @PathVariable(name="id")int id) {
+		usuarioService.borrarEstudiante(id);
+		return "redirect:/users/listarEstudiantes";		
+	}
+ 	
 }

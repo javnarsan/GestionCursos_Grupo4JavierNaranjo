@@ -34,6 +34,7 @@
 					<th>Nombre</th>
 					<th>Apellidos</th>
 					<th>Email</th>
+					<th>Estado</th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
@@ -45,15 +46,18 @@
 					</td>
 					<td th:text=${student.email}>
 					</td>
+					<td th:text=${student.enabled}>
+					</td>
 					<td>
-						<div th:switch="${student.enabled}">
-							<a th:case="false" th:href="@{/users/activarEstudiante/{id}(id=${student.id})}">
-								<button class="btn btn-info" type="button">Activar</button>
-							</a> 
-							<a th:case="true" th:href="@{/users/desactivarEstudiante/{id}(id=${student.id})}">
-								<button type="button" class="btn btn-danger">Desactivar</button>
-							</a>
-						</div>
+						<form style="display: inline-block;" th:action="@{/users/borrarEstudiante/{id}(id=${student.id})}" method="PUT">
+							<button onclick="return confirm('Estás seguro que deseas eliminar el estudiante?');" type="submit" class="btn btn-danger">Borrar</button>
+						</form>
+						<form style="display: inline-block;" th:if="${student.enabled == false}" th:action="@{/users/activarEstudiante/{id}(id=${student.id})}" method="POST">
+							<button type="submit" class="btn btn-success">Activar</button>
+						</form>
+						<form style="display: inline-block;" th:if="${student.enabled == true}" th:action="@{/users/desactivarEstudiante/{id}(id=${student.id})}" method="POST">
+							<button type="submit" class="btn btn-primary">Desactivar</button>
+						</form>
 					</td>
 				</tr>
 			</tbody>

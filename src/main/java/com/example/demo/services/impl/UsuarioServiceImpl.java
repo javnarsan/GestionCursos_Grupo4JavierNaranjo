@@ -7,7 +7,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.entities.User;
 import com.example.demo.models.UserModel;
 import com.example.demo.repositories.UserRepository;
@@ -63,17 +62,28 @@ public class UsuarioServiceImpl implements UsuarioService{
 	public UserModel findProfesor(long id) {
 		return transform(userRepository.findById(id).orElse(null));
 	}
-
+	
 	@Override
-	public long activarEstudiante(UserModel estuanteModel,long id) {
-		userRepository.findById(id).get().setEnabled(true);
-		return 0;
+	public User findUserById(long id) {
+		return userRepository.findUserById(id);
 	}
 
 	@Override
-	public long desactivarEstudiante(UserModel estuanteModel,long id) {
-		userRepository.findById(id).get().setEnabled(false);
-		return 0;
+	public User activarEstudiante(UserModel usuarioModel) {
+		usuarioModel.setEnabled(true);
+		return userRepository.save(transform(usuarioModel));
+	}
+
+	@Override
+	public User desactivarEstudiante(UserModel usuarioModel) {
+		usuarioModel.setEnabled(false);
+		return userRepository.save(transform(usuarioModel));
+	}
+
+	@Override
+	public void borrarEstudiante(int id) {
+		User usuario = userRepository.findUserById(id);
+		userRepository.delete(usuario);
 	}
 
 }

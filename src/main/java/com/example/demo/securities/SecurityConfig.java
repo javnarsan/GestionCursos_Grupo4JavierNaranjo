@@ -3,13 +3,10 @@ package com.example.demo.securities;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -22,17 +19,17 @@ public class SecurityConfig {
 		http
 			.authorizeRequests((requests) -> requests
 				.antMatchers("/", "/imgs/*","/photos/","/auth/","/webjars/**",
-						"/css/*","/index/**","/registro/**","/files/*").permitAll().antMatchers("/users/**").hasRole("ADMIN")
+						"/css/*","/index/**","/registro/**","/logout/**","/files/*").permitAll().antMatchers("/users/**").hasRole("ADMIN")
 				.anyRequest().authenticated()
 			)
 			.formLogin((form) -> form
-				.loginPage("/loguearse").usernameParameter("email")
-				.defaultSuccessUrl("/registro")
+				.loginPage("/auth/login").usernameParameter("email")
+				.defaultSuccessUrl("/")
 				.permitAll()
 			)
 			.logout((logout) -> logout.permitAll()
 					.logoutUrl("/logout")
-					.logoutSuccessUrl("/auth/login?logout"));
+					.logoutSuccessUrl("/auth/login"));
 
 		return http.build();
 	}

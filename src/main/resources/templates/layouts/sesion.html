@@ -6,7 +6,7 @@
 </head>
 <body>
 	<div class="container" th:fragment="sesion">
-		<form class="form=signin" th:action="@{/loguearse}" th:object="${user}" method="POST">
+		<form class="form=signin" th:action="@{/auth/login}" th:object="${user}" method="POST">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<h2 class="form-signin-heading">Sign in</h2>
 			<label for="inputEmail" class="sr-only">Username</label>

@@ -26,20 +26,20 @@
 				class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 				<li><a href="/" class="nav-link px-2 link-secondary">Inicio</a></li>
 				<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="/users/listProfesores" class="nav-link px-2 link-dark">Profesores</a></li>
-				<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="#" class="nav-link px-2 link-dark">Alumnos</a></li>
+				<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="/users/listarEstudiantes" class="nav-link px-2 link-dark">Alumnos</a></li>
 				<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="/cursos/listCursos" class="nav-link px-2 link-dark">Cursos</a></li>
 				<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="#" class="nav-link px-2 link-dark">Noticias</a></li>
 			</ul>
 
 			<div class="col-md-3 text-end">
-				<a sec:authorize="!isAuthenticated()" th:href="@{/loguearse}"><button type="button" class="btn btn-outline-primary me-2">Iniciar sesión</button></a>
+				<a sec:authorize="!isAuthenticated()" th:href="@{/auth/login}"><button type="button" class="btn btn-outline-primary me-2">Iniciar sesión</button></a>
 				<a sec:authorize="!isAuthenticated()" th:href="@{/registro}"><button type="button" class="btn btn-primary">Registrar</button></a>
 			</div>
 			<div class="col-md-3 text-start">
 				<p sec:authorize="isAuthenticated()" class="nav-item">
 					<small class="nav-link" th:text="'Hola '+${#authentication.name}"></small>
 				</p>
-				<form class="form-inline" th:action="@{/loguearse}" method="post">
+				<form class="form-inline" th:action="@{/auth/login}" method="post">
 					<button sec:authorize="isAuthenticated()" class="btn btn-success" type="submit">Cerrar sesión</button>
 				</form>
 			</div>

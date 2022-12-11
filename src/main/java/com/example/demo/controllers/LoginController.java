@@ -21,15 +21,20 @@ public class LoginController {
 		@Autowired
 		@Qualifier("userService")
 		private UserService userService;
-		@GetMapping("/loguearse")
+		@GetMapping("/auth/login")
 		public String login(Model model,@RequestParam(name="error",required=false) String error,
 				@RequestParam(name="logout",required=false) String logout) {
+				try {
 					model.addAttribute("user",new User());
 					model.addAttribute("error",error);
 					model.addAttribute("logout",logout);
-					return "login";
-			
+					
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+				return "login";
 		}
+		
 		@GetMapping("/registro")
 		public String registerForm(Model model) {
 			model.addAttribute("user",new User());
