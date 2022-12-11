@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body >
+	<p th:fragment="sesion" sec:authorize="isAuthenticated()" class="nav-item">
+	<small class="nav-link" th:text="'Hola '+${#authentication.name}"></small>
+	<p>	
+</body>
+</html>
