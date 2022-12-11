@@ -9,10 +9,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
-                <form class="form-horizontal" th:action="@{/alumno/addPersonal}" th:object="${personal}" method="post">
+                <form class="form-horizontal center" th:action="@{/alumno/addPersonal}" th:object="${personal}" method="post">
                     <fieldset>
                         <legend class="text-center header">Edita tu perfil personal de alumno</legend>
 						<input type="hidden" th:field="*{id}" id="id"/>
+						<div class="card-body">
+						<img width="200" height="200" class="img-thumbnail rounded" th:src="@{'/imgs/' + *{foto}}"/>
+						</div>
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
@@ -45,12 +48,14 @@
                             </div>
                         </div>
 						<br/>
+						
 						<div class="alert alert-success" th:if="${success!=null}" th:text="${success}"></div>
                         <div class="form-group">
                             <div class="col-md-12 text-center">
                                 <button th:data-confirm-update="|Estas seguro de que deseas modificar tu perfil?|" th:onclick="if (!confirm(this.getAttribute('data-confirm-update'))) return false" type="submit"  class="btn btn-primary btn-lg">Editar</button>
                             </div>
                         </div>
+                        
                     </fieldset>
                 </form>
             </div>
