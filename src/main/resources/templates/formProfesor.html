@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
-                <form class="form-horizontal" th:action="@{/users/addProfesor}" th:object="${profesor}" method="post">
+                <form class="form-horizontal" th:action="@{/admin/addProfesor}" th:object="${profesor}" method="post">
                     <fieldset>
                         <legend th:text="${profesor.id!=0} ? 'Editar Profesor' : 'Nuevo Profesor'" class="text-center header">Nuevo Profesor</legend>
 						<input type="hidden" th:field="*{id}" id="id"/>

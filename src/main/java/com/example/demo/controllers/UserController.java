@@ -18,7 +18,8 @@ import com.example.demo.services.UsuarioService;
 
 
 @Controller
-@RequestMapping("/users")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
+@RequestMapping("/admin")
 public class UserController {
 	private static final String Profesores_VIEW="profesores";
 
@@ -43,7 +44,7 @@ public class UserController {
 			flash.addFlashAttribute("success","Profesor eliminado correctamente");
 		else 
 			flash.addFlashAttribute("error","No se ha podido eliminar al profesor");
-		return "redirect:/users/listProfesores";
+		return "redirect:/admin/listProfesores";
 	}
 	@PostMapping("/addProfesor")
 	public String addProfesor(@ModelAttribute("profesor") UserModel profesorModel,RedirectAttributes flash,BindingResult result) {
@@ -59,7 +60,7 @@ public class UserController {
 						usuarioService.updateProfesor(profesorModel);
 						flash.addFlashAttribute("success","Profesor modificado correctamente");
 					}
-					return "redirect:/users/listProfesores"; 
+					return "redirect:/admin/listProfesores"; 
 			 }catch(Exception e) {
 				 flash.addFlashAttribute("success","Email duplicado");
 				 return FORMPROF_VIEW;
@@ -89,20 +90,20 @@ public class UserController {
 	public String activeUser(Model model, @PathVariable(name="id")long id) {
 		com.example.demo.entities.User usuario = usuarioService.findUserById(id);
 		model.addAttribute("usuario",usuarioService.activarEstudiante(usuarioService.transform(usuario)));
-		return "redirect:/users/listarEstudiantes";
+		return "redirect:/admin/listarEstudiantes";
 	}
 	
 	@PostMapping("/desactivarEstudiante/{id}")
 	public String deactiveUser(Model model, @PathVariable(name="id")long id) {
 		com.example.demo.entities.User usuario = usuarioService.findUserById(id);
 		model.addAttribute("usuario",usuarioService.desactivarEstudiante(usuarioService.transform(usuario)));
-		return "redirect:/users/listarEstudiantes";
+		return "redirect:/admin/listarEstudiantes";
 	}
 	
 	@GetMapping("/borrarEstudiante/{id}")
 	public String borrarEstudiante(Model model, @PathVariable(name="id")int id) {
 		usuarioService.borrarEstudiante(id);
-		return "redirect:/users/listarEstudiantes";		
+		return "redirect:/admin/listarEstudiantes";		
 	}
  	
 }

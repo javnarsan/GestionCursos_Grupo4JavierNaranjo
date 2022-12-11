@@ -24,10 +24,10 @@
 					<th th:text=${profesor.apellidos}></th>
 					<th th:text=${profesor.email}></th>
 					<th>
-						<a th:href="@{/users/formProfesor/}+${profesor.id}">
+						<a th:href="@{/admin/formProfesor/}+${profesor.id}">
 							<button type="button" class="btn btn-primary">Edit</button>
 						</a> 
-						<a th:href="@{/users/deleteProfesor/}+${profesor.id}">
+						<a th:href="@{/admin/deleteProfesor/}+${profesor.id}">
 							<button type="button" class="btn btn-danger">Delete</button>
 						</a>
 					</th>
@@ -36,7 +36,7 @@
 		</table>
 		<div class="alert alert-success" th:if="${success!=null}"
 			th:text="${success}"></div>
-		<a th:href="@{/users/formProfesor/}">
+		<a th:href="@{/admin/formProfesor/}">
 			<button type="button" class="btn btn-success btm-sm">Create</button>
 		</a>
 	</div>

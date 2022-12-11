@@ -40,13 +40,13 @@
 					<td th:text=${student.enabled}>
 					</td>
 					<td>
-						<form style="display: inline-block;" th:action="@{/users/borrarEstudiante/{id}(id=${student.id})}" method="PUT">
-							<button onclick="return confirm('Estás seguro que deseas eliminar el estudiante?');" type="submit" class="btn btn-danger">Borrar</button>
+						<form style="display: inline-block;" th:action="@{/admin/borrarEstudiante/{id}(id=${student.id})}" method="PUT">
+							<button onclick="confirm('Estás seguro que deseas eliminar el estudiante?');" type="submit" class="btn btn-danger">Borrar</button>
 						</form>
-						<form style="display: inline-block;" th:if="${student.enabled == false}" th:action="@{/users/activarEstudiante/{id}(id=${student.id})}" method="POST">
+						<form style="display: inline-block;" th:if="${student.enabled == false}" th:action="@{/admin/activarEstudiante/{id}(id=${student.id})}" method="POST">
 							<button type="submit" class="btn btn-success">Activar</button>
 						</form>
-						<form style="display: inline-block;" th:if="${student.enabled == true}" th:action="@{/users/desactivarEstudiante/{id}(id=${student.id})}" method="POST">
+						<form style="display: inline-block;" th:if="${student.enabled == true}" th:action="@{/admin/desactivarEstudiante/{id}(id=${student.id})}" method="POST">
 							<button type="submit" class="btn btn-primary">Desactivar</button>
 						</form>
 					</td>

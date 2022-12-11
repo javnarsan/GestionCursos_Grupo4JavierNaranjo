@@ -19,7 +19,7 @@ public class SecurityConfig {
 		http
 			.authorizeRequests((requests) -> requests
 				.antMatchers("/", "/imgs/*","/photos/","/auth/","/webjars/**",
-						"/css/*","/index/**","/registro/**","/logout/**","/files/*").permitAll().antMatchers("/users/**").hasRole("ADMIN")
+						"/css/*","/index/**","/registro/**","/logout/**","/files/*").permitAll().antMatchers("/admin/**").hasRole("ADMIN").antMatchers("/cursos/**").hasRole("ADMIN")
 				.anyRequest().authenticated()
 			)
 			.formLogin((form) -> form
