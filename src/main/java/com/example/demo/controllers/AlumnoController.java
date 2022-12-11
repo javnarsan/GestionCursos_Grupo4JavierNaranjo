@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,7 +33,7 @@ public class AlumnoController {
 		return FORMPERSONAL_VIEW;
 	}
 
-	@PostMapping("/addPersonal")
+	@PutMapping("/addPersonal")
 	public String addPersonal(@ModelAttribute("personal") UserModel personalModel, RedirectAttributes flash,
 			BindingResult result) {
 		if (result.hasErrors()) {
