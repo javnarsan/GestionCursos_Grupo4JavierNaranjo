@@ -27,7 +27,7 @@
 						<a th:href="@{/admin/formProfesor/}+${profesor.id}">
 							<button type="button" class="btn btn-primary">Edit</button>
 						</a> 
-						<a th:href="@{/admin/deleteProfesor/}+${profesor.id}">
+						<a th:data-confirm-delete="|Estas seguro de que quieres eliminar al profesor ${profesor.nombre}?|" th:onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false" th:href="@{/admin/deleteProfesor/}+${profesor.id}">
 							<button type="button" class="btn btn-danger">Delete</button>
 						</a>
 					</th>
