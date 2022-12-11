@@ -19,7 +19,7 @@ public class SecurityConfig {
 		http
 			.authorizeRequests((requests) -> requests
 				.antMatchers("/", "/imgs/*","/photos/","/auth/","/webjars/**",
-						"/css/*","/index/**","/registro/**","/logout/**","/files/*").permitAll().antMatchers("/admin/**").hasRole("ADMIN").antMatchers("/cursos/**").hasRole("ADMIN")
+						"/css/*","/index/**","/registro/**","/files/*").permitAll().antMatchers("/admin/**").hasRole("ADMIN").antMatchers("/cursos/**").hasRole("ADMIN")
 				.anyRequest().authenticated()
 			)
 			.formLogin((form) -> form
@@ -29,7 +29,7 @@ public class SecurityConfig {
 			)
 			.logout((logout) -> logout.permitAll()
 					.logoutUrl("/logout")
-					.logoutSuccessUrl("/auth/login"));
+					.logoutSuccessUrl("/auth/login?error"));
 
 		return http.build();
 	}
