@@ -96,6 +96,11 @@ public class CursoModel {
 	public void setMatriculas(List<Matricula> matriculas) {
 		this.matriculas = matriculas;
 	}
+	@Override
+	public String toString() {
+		return "CursoModel [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", nivel=" + nivel
+				+ ", profesor=" + profesor + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + "]";
+	}
 	
 	
 	

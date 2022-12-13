@@ -53,7 +53,7 @@ public class Curso {
 	public int getId() {
 		return id;
 	}
-	public void setIdAdministrador(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getNombre() {
