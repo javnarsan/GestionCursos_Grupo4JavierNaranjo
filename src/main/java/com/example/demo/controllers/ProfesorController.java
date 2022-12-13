@@ -5,14 +5,14 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -30,12 +30,13 @@ public class ProfesorController {
 	@Qualifier("usuarioService")
 	private UsuarioService usuarioService;
 	
-	@PreAuthorize("#email==authentication.name")
-	@GetMapping(value = { "/formPersonal/{email}" })
-	public String formProfesor(@PathVariable(name = "email", required = false) String email, Model model) {
-		model.addAttribute("personal", usuarioService.findUserByEmail(email));
-		return FORMPERSONAL_VIEW;
-	}
+	@GetMapping(value = { "/formPersonal" })
+	  public String formProfesor(Model model) {
+	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	    String userEmail = authentication.getName();
+	    model.addAttribute("personal", usuarioService.findUserByEmail(userEmail));
+	    return FORMPERSONAL_VIEW;
+	  }
 	@PreAuthorize("#personalModel.email==authentication.name")
 	@PostMapping("/addPersonal")
 	public String addPersonal(@Valid @ModelAttribute("user") User user, @ModelAttribute("personal") UserModel personalModel, RedirectAttributes flash,
