@@ -1,5 +1,6 @@
 package com.example.demo.services.impl;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +32,8 @@ public class NoticiaServiceImpl implements NoticiaService{
 
 	@Override
 	public Noticia addNoticia(NoticiaModel noticiaModel) {
-		// TODO Auto-generated method stub
+		LocalDateTime datetime = LocalDateTime.now();
+		noticiaModel.setFechaCreacion(datetime);
 		return noticiaRepository.save(transform(noticiaModel));
 	}
 
@@ -45,6 +47,8 @@ public class NoticiaServiceImpl implements NoticiaService{
 	@Override
 	public Noticia updateNoticia(NoticiaModel noticiaModel) {
 		// TODO Auto-generated method stub
+		LocalDateTime datetime = LocalDateTime.now();
+		noticiaModel.setFechaCreacion(datetime);
 		return noticiaRepository.save(transform(noticiaModel));
 	}
 

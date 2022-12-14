@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="layouts/header :: head(~{::title})">
+		<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form class="form-horizontal" th:action="@{/news/addNews}" th:object="${article}" method="post">
+                    <fieldset>
+                        <legend th:text="${article.id!=0} ? 'Edit New' : 'Breaking New'" class="text-center header">Breaking New</legend>
+						<input type="hidden" th:field="*{id}" id="id"/>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="fname" th:field="*{titulo}" name="titulo" pattern=".{2,40}" required type="text" placeholder="Title" class="form-control">
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></small>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="lname" th:field="*{descripcion}" pattern=".{2,90}" required name="descripcion" type="text" placeholder="Description" class="form-control">
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></small>
+                            </div>
+						<br/>
+						<div class="alert alert-success" th:if="${success!=null}" th:text="${success}"></div>
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Aceptar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
