@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 @Entity
 public class Noticia {
 	@Id
@@ -17,6 +20,7 @@ public class Noticia {
 	private int id;
 	private String titulo;
 	private String descripcion;
+	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime fechaCreacion;
 	private String imagen;
 	@ManyToOne

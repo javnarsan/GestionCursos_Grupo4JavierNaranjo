@@ -40,9 +40,9 @@ public class NoticiaController {
 	@GetMapping("/deleteNews/{id}")
 	public String deletetNews(@PathVariable("id") int id,RedirectAttributes flash) {
 		if(noticiaService.removeNoticia(id)==0) 
-			flash.addFlashAttribute("success","Article deleted correctly");
+			flash.addFlashAttribute("success","Article successfully deleted");
 		else 
-			flash.addFlashAttribute("error","Article deleted incorrectly");
+			flash.addFlashAttribute("error","Article unsuccessfully deleted");
 		return "redirect:/news/listNews";
 	}
 	@PostMapping("/addNews")
@@ -51,12 +51,11 @@ public class NoticiaController {
 			 return FORMNEWS_VIEW;
 		 }else {
 				 if(newsModel.getId()==0) {
-					 
 						noticiaService.addNoticia(newsModel);
-						flash.addFlashAttribute("success","Article inserted successfully");
+						flash.addFlashAttribute("success","Article successfully inserted");
 					}else {
 						noticiaService.updateNoticia(newsModel);
-						flash.addFlashAttribute("success","Article inserted unsuccessfully");
+						flash.addFlashAttribute("success","Article successfully updated");
 					}
 					return "redirect:/news/listNews"; 
 			}

@@ -43,8 +43,8 @@
 						<div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
-                            	<label for="fechaInicio">Fecha de inicio (MM/dd/aaaa)</label>
-                                <input id="fechaInicio" th:text="${#dates.format(curso.fechaInicio, 'dd/MM/yyyy')}" required pattern="\d{2}/\d{2}/\d{4}" name="fechaInicio" class="form-control">
+                            	<label for="fechaInicio">Fecha de inicio</label>
+                                <input id="fechaInicio" type="date" th:text="${#temporals.formatISO(curso.fechaInicio)}" required pattern="\d{2}/\d{2}/\d{4}" name="fechaInicio" class="form-control">
                                 <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></small>
                             </div>
                         </div>
@@ -52,8 +52,8 @@
 						<div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
-                            	<label for="fechaFin">Fecha de fin (MM/dd/aaaa)</label>
-                                <input id="fechaFin" th:text="${#dates.format(curso.fechaFin, 'dd/MM/yyyy')}" required pattern="\d{2}/\d{2}/\d{4}" name="fechaFin" class="form-control">
+                            	<label for="fechaFin">Fecha de fin</label>
+                                <input id="fechaFin" type="date" th:text="${#temporals.formatISO(curso.fechaFin)}" required pattern="\d{2}/\d{2}/\d{4}" name="fechaFin" class="form-control">
                                 <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}"></small>
                             </div>
                         </div>

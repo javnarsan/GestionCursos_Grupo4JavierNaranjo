@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -21,8 +22,8 @@ public class CursoModel {
 	private String descripcion;
 	private int nivel;
 	private User profesor;
-	private Date fechaInicio;
-	private Date fechaFin;
+	private LocalDate fechaInicio;
+	private LocalDate fechaFin;
 	private List<Comentario> comentarios;
 	private List<Matricula> matriculas;
 	public CursoModel() {
@@ -30,7 +31,7 @@ public class CursoModel {
 		// TODO Auto-generated constructor stub
 	}
 	public CursoModel(int id, String nombre, String descripcion, int nivel, User usuario,
-			Date fechaInicio, Date fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
+			LocalDate fechaInicio, LocalDate fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -72,16 +73,16 @@ public class CursoModel {
 	public void setUsuario(User usuario) {
 		this.profesor = usuario;
 	}
-	public Date getFechaInicio() {
+	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	public Date getFechaFin() {
+	public LocalDate getFechaFin() {
 		return fechaFin;
 	}
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 	public List<Comentario> getComentarios() {

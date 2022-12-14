@@ -14,7 +14,7 @@
 				<tr>
 					<th>Titulo</th>
 					<th>Descripcion</th>
-					<th>Local Time Date</th>
+					<th>Fecha de creacion</th>
 					
 				</tr>
 			</thead>
@@ -22,7 +22,7 @@
 				<tr>
 					<th th:text=${article.titulo}></th>
 					<th th:text=${article.descripcion}></th>
-					<th th:text=${article.fechaCreacion}></th>
+					<th th:text="${#temporals.format(article.fechaCreacion, 'dd-MM-yyyy - HH:mm')}"></th>
 					<th>
 						<a th:href="@{/news/formNews/}+${article.id}">
 							<button type="button" class="btn btn-primary">Edit</button>

@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
 public class Curso {
@@ -25,10 +27,10 @@ public class Curso {
 	@ManyToOne
 	@JoinColumn(name="profesorId")
 	private User profesorCurs;
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private Date fechaInicio;
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private Date fechaFin;
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDate fechaInicio;
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDate fechaFin;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "curso")
 	private List<Comentario> comentarios;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "cursoMat")
@@ -38,7 +40,7 @@ public class Curso {
 		// TODO Auto-generated constructor stub
 	}
 	public Curso(int id, String nombre, String descripcion, int nivel, User profesor,
-			Date fechaInicio, Date fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
+			LocalDate fechaInicio, LocalDate fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -80,16 +82,16 @@ public class Curso {
 	public void setProfesor(User profesor) {
 		this.profesorCurs = profesor;
 	}
-	public Date getFechaInicio() {
+	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	public Date getFechaFin() {
+	public LocalDate getFechaFin() {
 		return fechaFin;
 	}
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 	public List<Comentario> getComentarios() {
