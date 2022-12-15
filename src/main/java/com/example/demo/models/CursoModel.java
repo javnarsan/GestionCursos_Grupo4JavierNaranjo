@@ -22,8 +22,8 @@ public class CursoModel {
 	private String descripcion;
 	private int nivel;
 	private User profesor;
-	private LocalDate fechaInicio;
-	private LocalDate fechaFin;
+	private Date fechaInicio;
+	private Date fechaFin;
 	private List<Comentario> comentarios;
 	private List<Matricula> matriculas;
 	public CursoModel() {
@@ -31,7 +31,7 @@ public class CursoModel {
 		// TODO Auto-generated constructor stub
 	}
 	public CursoModel(int id, String nombre, String descripcion, int nivel, User usuario,
-			LocalDate fechaInicio, LocalDate fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
+			Date fechaInicio, Date fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -73,16 +73,16 @@ public class CursoModel {
 	public void setUsuario(User usuario) {
 		this.profesor = usuario;
 	}
-	public LocalDate getFechaInicio() {
+	public Date getFechaInicio() {
 		return fechaInicio;
 	}
-	public void setFechaInicio(LocalDate fechaInicio) {
+	public void setFechaInicio(Date fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	public LocalDate getFechaFin() {
+	public Date getFechaFin() {
 		return fechaFin;
 	}
-	public void setFechaFin(LocalDate fechaFin) {
+	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 	public List<Comentario> getComentarios() {

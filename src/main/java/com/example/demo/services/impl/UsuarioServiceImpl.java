@@ -97,13 +97,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public boolean existeEmail(String email) {
 		boolean Existe=false;
-		List<UserModel> listaAlumnos = userRepository.findAll().stream().map(c -> transform(c)).collect(Collectors.toList());
-		for (UserModel usermodel : listaAlumnos) {
-			if (usermodel.getEmail().equals(email)) {
-				Existe = true;
-				break;
-			}
-		}
+		if(userRepository.findUserByEmail(email)!=null)
+			Existe = true;
 		return Existe;
 	}
 

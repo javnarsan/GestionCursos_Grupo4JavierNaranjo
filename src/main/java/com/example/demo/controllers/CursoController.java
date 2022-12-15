@@ -47,6 +47,7 @@ public class CursoController {
 	@PostMapping("/addCurso")
 	public String addCurso(@ModelAttribute("curso") CursoModel cursoModel,RedirectAttributes flash) {
 		if(cursoModel.getId()==0) {
+			System.out.println("Fecha que le llega al controlador: "+cursoModel.getFechaInicio());
 			cursoService.addCurso(cursoModel);
 			flash.addFlashAttribute("success","Curso insertado correctamente");
 		}else {
