@@ -17,7 +17,7 @@ import com.example.demo.exceptions.FileNotFoundException;
 import org.springframework.core.io.Resource;
 
 
-@Service
+@Service("uploadService")
 public class FileSystemStorageService implements StrorageService {
 	
 	@Value("${storage.location}")

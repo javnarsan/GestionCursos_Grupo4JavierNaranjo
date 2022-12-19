@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.models.NoticiaModel;
 import com.example.demo.models.UserModel;
 import com.example.demo.services.NoticiaService;
+import com.example.upload.FileSystemStorageService;
 
 
 @Controller
@@ -29,6 +32,8 @@ public class NoticiaController {
 	@Autowired
 	@Qualifier("noticiaService")
 	private NoticiaService noticiaService;
+	@Qualifier("uploadService")
+	FileSystemStorageService filesystemstorageservice;
 	
 	@GetMapping("/listNews")
 	public ModelAndView listNews() {
@@ -46,11 +51,14 @@ public class NoticiaController {
 		return "redirect:/news/listNews";
 	}
 	@PostMapping("/addNews")
-	public String addNews(@ModelAttribute("article") NoticiaModel newsModel,RedirectAttributes flash,BindingResult result) {
+	public String addNews(@ModelAttribute("article") NoticiaModel newsModel,RedirectAttributes flash,BindingResult result,@RequestParam("file") MultipartFile img) {
 		if (result.hasErrors()) {
 			 return FORMNEWS_VIEW;
 		 }else {
 				 if(newsModel.getId()==0) {
+					 System.err.println("Llego");
+					 	filesystemstorageservice.almacenarArchivo(img);
+					 	newsModel.setImagen(img.getOriginalFilename());
 						noticiaService.addNoticia(newsModel);
 						flash.addFlashAttribute("success","Article successfully inserted");
 					}else {
