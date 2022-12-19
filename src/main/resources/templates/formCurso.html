@@ -44,8 +44,8 @@
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
                             	<label for="fechaInicio">Fecha de inicio</label>
-                                <input type="date" th:field="*{fechaInicio}" class="form-control">
-                                <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></small>
+                                <input id="fechaInicio" type="date" th:field="*{curso.fechaInicio}" name="fechaInicio" class="form-control">
+                                <!-- <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></small> -->
                             </div>
                         </div>
 						<br/>
@@ -53,8 +53,8 @@
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
                             	<label for="fechaFin">Fecha de fin</label>
-                                <input id="fechaFin" type="date" th:text="${#temporals.formatISO(curso.fechaFin)}" required pattern="\d{2}/\d{2}/\d{4}" name="fechaFin" class="form-control">
-                                <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}"></small>
+                                <input id="fechaFin" type="date" th:field="*{curso.fechaFin}" name="fechaFin" class="form-control">
+                                <!--<small class="form-text text-danger" th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}"></small> -->
                             </div>
                         </div>
 						<br/>

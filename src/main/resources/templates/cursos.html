@@ -27,8 +27,8 @@
 					<th th:text=${curso.nombre}></th>
 					<th th:text=${curso.descripcion}></th>
 					<th th:text=${curso.nivel}></th>
-					<th th:text="${#temporals.formatISO(curso.fechaInicio)}"></th>
-					<th th:text="${#temporals.formatISO(curso.fechaFin)}"></th>
+					<th th:text="${curso.fechaInicio}"></th>
+					<th th:text="${curso.fechaFin}"></th>
 					<!-- <th th:text=${curso.profesor}></th> --> 
 					<th><a th:href="@{/cursos/formCurso/}+${curso.id}">
 							<button type="button" class="btn btn-primary">Edit</button>
