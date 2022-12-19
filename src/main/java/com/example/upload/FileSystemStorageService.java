@@ -1,73 +1,83 @@
 package com.example.upload;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
-import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.stream.Stream;
-
-import org.springframework.core.io.Resource;
+import java.nio.file.StandardCopyOption;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
+import com.example.demo.exceptions.AlmacenExcepcion;
+import com.example.demo.exceptions.FileNotFoundException;
+import org.springframework.core.io.Resource;
+
 
 @Service
 public class FileSystemStorageService implements StrorageService {
-
-  private final Path root = Paths.get("uploads");
-
-  @Override
-  public void init() {
-    try {
-      Files.createDirectories(root);
-    } catch (IOException e) {
-      throw new RuntimeException("Could not initialize folder for upload!");
-    }
-  }
+	
+	@Value("${storage.location}")
+	private String storageLocation;
 
   @Override
-  public void save(MultipartFile file,int id) {
-    try {
-      Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
-    } catch (Exception e) {
-      if (e instanceof FileAlreadyExistsException) {
-        throw new RuntimeException("A file of that name already exists.");
-      }
+	public void iniciarAlmacenDeArchivos() {
+		try {
+			Files.createDirectories(Paths.get(storageLocation));
+		}catch (IOException excepcion) {
+			throw new AlmacenExcepcion("Error al inicializar la ubicación en el almacen de archivos");
+		}
+		
+	}
 
-      throw new RuntimeException(e.getMessage());
-    }
-  }
+	@Override
+	public String almacenarArchivo(MultipartFile archivo) {
+		String nombreArchivo = archivo.getOriginalFilename();
+		if(archivo.isEmpty()) {
+			throw new AlmacenExcepcion("No se puede almacenar un archivo vacio");
+		}
+		try {
+			InputStream inputStream  = archivo.getInputStream();
+			Files.copy(inputStream,Paths.get(storageLocation).resolve(nombreArchivo),StandardCopyOption.REPLACE_EXISTING);
+		}catch (IOException excepcion) {
+			throw new AlmacenExcepcion("Error al almacenar el archivo " + nombreArchivo,excepcion);
+		}
+		return nombreArchivo;
+	}
 
-  @Override
-  public javax.annotation.Resource load(String filename) {
-    try {
-      Path file = root.resolve(filename);
-      Resource resource = new UrlResource(file.toUri());
+	@Override
+	public Path cargarArchivo(String nombreArchivo) {
+		return Paths.get(storageLocation).resolve(nombreArchivo);
+	}
 
-      if (resource.exists() || resource.isReadable()) {
-        return (javax.annotation.Resource) resource;
-      } else {
-        throw new RuntimeException("Could not read the file!");
-      }
-    } catch (MalformedURLException e) {
-      throw new RuntimeException("Error: " + e.getMessage());
-    }
-  }
+	@Override
+	public Resource cargarComoRecurso(String nombreArchivo) {
+		try {
+			Path archivo = cargarArchivo(nombreArchivo);
+			Resource recurso = new UrlResource(archivo.toUri());
+			
+			if(recurso.exists() || recurso.isReadable()) {
+				return recurso;
+			}else {
+				throw new FileNotFoundException("No se pudo encontrar el archivo " + nombreArchivo);
+			}
+		
+		}catch (MalformedURLException excepcion) {
+			throw new FileNotFoundException("No se pudo encontrar el archivo " + nombreArchivo,excepcion);
+		}
+	}
 
-  @Override
-  public void deleteAll() {
-    FileSystemUtils.deleteRecursively(root.toFile());
-  }
-
-  @Override
-  public Stream<Path> loadAll() {
-    try {
-      return Files.walk(this.root, 1).filter(path -> !path.equals(this.root)).map(this.root::relativize);
-    } catch (IOException e) {
-      throw new RuntimeException("Could not load the files!");
-    }
-  }
+	@Override
+	public void eliminarArchivo(String nombreArchivo) {
+		Path archivo = cargarArchivo(nombreArchivo);
+		try {
+			FileSystemUtils.deleteRecursively(archivo);
+		}catch (Exception excepcion) {
+			System.out.println(excepcion);
+		}
+		
+	}
 }

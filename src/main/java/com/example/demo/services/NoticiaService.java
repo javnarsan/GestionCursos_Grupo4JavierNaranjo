@@ -1,10 +1,7 @@
 package com.example.demo.services;
 
 import java.util.List;
-
-import com.example.demo.entities.Matricula;
 import com.example.demo.entities.Noticia;
-import com.example.demo.models.MatriculaModel;
 import com.example.demo.models.NoticiaModel;
 
 public interface NoticiaService {
@@ -15,4 +12,6 @@ public interface NoticiaService {
 	public abstract Noticia transform(NoticiaModel noticiaModel);
 	public abstract NoticiaModel transform(Noticia noticia);
 	public abstract NoticiaModel findNoticia(int id);
+	
+	
 }

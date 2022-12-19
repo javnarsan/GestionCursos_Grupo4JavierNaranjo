@@ -1,20 +1,13 @@
 package com.example.upload;
 
 import java.nio.file.Path;
-import java.util.stream.Stream;
-
-import javax.annotation.Resource;
-
+import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface StrorageService{
-	  public void init();
-
-	  public void save(MultipartFile file,int id);
-
-	  public Resource load(String filename);
-
-	  public void deleteAll();
-
-	  public Stream<Path> loadAll();
+	public void iniciarAlmacenDeArchivos();
+	public String almacenarArchivo(MultipartFile archivo);
+	public Path cargarArchivo(String nombreArchivo);
+	public Resource cargarComoRecurso(String nombreArchivo);
+	public void eliminarArchivo(String nombreArchivo);
 }

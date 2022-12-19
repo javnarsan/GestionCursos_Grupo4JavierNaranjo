@@ -1,20 +1,18 @@
 package com.example.demo.services.impl;
 
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import com.example.demo.entities.Matricula;
 import com.example.demo.entities.Noticia;
-import com.example.demo.models.MatriculaModel;
 import com.example.demo.models.NoticiaModel;
 import com.example.demo.repositories.NoticiaRepository;
 import com.example.demo.services.NoticiaService;
+
 
 @Service("noticiaService")
 public class NoticiaServiceImpl implements NoticiaService{
