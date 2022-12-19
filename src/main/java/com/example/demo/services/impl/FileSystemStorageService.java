@@ -1,4 +1,4 @@
-package com.example.upload;
+package com.example.demo.services.impl;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,10 +14,12 @@ import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.exceptions.AlmacenExcepcion;
 import com.example.demo.exceptions.FileNotFoundException;
+import com.example.demo.services.StrorageService;
+
 import org.springframework.core.io.Resource;
 
 
-@Service("uploadService")
+@Service("strorageService")
 public class FileSystemStorageService implements StrorageService {
 	
 	@Value("${storage.location}")

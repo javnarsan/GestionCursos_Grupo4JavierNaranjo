@@ -19,7 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.demo.models.NoticiaModel;
 import com.example.demo.models.UserModel;
 import com.example.demo.services.NoticiaService;
-import com.example.upload.FileSystemStorageService;
+import com.example.demo.services.StrorageService;
+import com.example.demo.services.impl.FileSystemStorageService;
 
 
 @Controller
@@ -32,8 +33,9 @@ public class NoticiaController {
 	@Autowired
 	@Qualifier("noticiaService")
 	private NoticiaService noticiaService;
-	@Qualifier("uploadService")
-	FileSystemStorageService filesystemstorageservice;
+	@Autowired
+	@Qualifier("strorageService")
+	private StrorageService strorageService;
 	
 	@GetMapping("/listNews")
 	public ModelAndView listNews() {
@@ -57,7 +59,7 @@ public class NoticiaController {
 		 }else {
 				 if(newsModel.getId()==0) {
 					 System.err.println("Llego");
-					 	filesystemstorageservice.almacenarArchivo(img);
+					 	strorageService.almacenarArchivo(img);
 					 	newsModel.setImagen(img.getOriginalFilename());
 						noticiaService.addNoticia(newsModel);
 						flash.addFlashAttribute("success","Article successfully inserted");
