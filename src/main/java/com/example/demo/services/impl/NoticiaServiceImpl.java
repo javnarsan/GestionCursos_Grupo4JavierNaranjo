@@ -12,6 +12,7 @@ import com.example.demo.entities.Noticia;
 import com.example.demo.models.NoticiaModel;
 import com.example.demo.repositories.NoticiaRepository;
 import com.example.demo.services.NoticiaService;
+import com.example.demo.services.StrorageService;
 
 
 @Service("noticiaService")
@@ -20,6 +21,10 @@ public class NoticiaServiceImpl implements NoticiaService{
 	@Autowired
 	@Qualifier("noticiaRepository")
 	private NoticiaRepository noticiaRepository;
+	
+	@Autowired
+	@Qualifier("strorageService")
+	private StrorageService strorageService;
 	
 	
 	@Override
@@ -38,6 +43,8 @@ public class NoticiaServiceImpl implements NoticiaService{
 	@Override
 	public int removeNoticia(int id) {
 		// TODO Auto-generated method stub
+		String img=noticiaRepository.findById(id).get().getImagen();
+		strorageService.eliminarArchivo(img);
 		noticiaRepository.deleteById(id);
 		return 0;
 	}

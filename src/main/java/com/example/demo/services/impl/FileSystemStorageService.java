@@ -36,8 +36,8 @@ public class FileSystemStorageService implements StrorageService {
 	}
 
 	@Override
-	public String almacenarArchivo(MultipartFile archivo) {
-		String nombreArchivo = archivo.getOriginalFilename();
+	public String almacenarArchivo(MultipartFile archivo,String titulo) {
+		String nombreArchivo = titulo+"."+archivo.getOriginalFilename().substring(archivo.getOriginalFilename().lastIndexOf(".") + 1);
 		if(archivo.isEmpty()) {
 			throw new AlmacenExcepcion("No se puede almacenar un archivo vacio");
 		}
