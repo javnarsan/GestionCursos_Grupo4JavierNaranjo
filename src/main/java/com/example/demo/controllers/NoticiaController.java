@@ -55,18 +55,19 @@ public class NoticiaController {
 	@PostMapping("/addNews")
 	public String addNews(@ModelAttribute("article") NoticiaModel newsModel,RedirectAttributes flash,BindingResult result,@RequestParam("file") MultipartFile img) {
 		String filename = newsModel.getTitulo()+"."+img.getOriginalFilename().substring(img.getOriginalFilename().lastIndexOf(".") + 1);
+		String aux=filename.replace(" ", "_");
 		if (result.hasErrors()) {
 			 return FORMNEWS_VIEW;
 		 }else {
 				 if(newsModel.getId()==0) {
 					 	strorageService.almacenarArchivo(img,newsModel.getTitulo());
-					 	newsModel.setImagen(filename);
+					 	newsModel.setImagen(aux);
 						noticiaService.addNoticia(newsModel);
 						flash.addFlashAttribute("success","Article successfully inserted");
 						
 					}else {
 						strorageService.almacenarArchivo(img,newsModel.getTitulo());
-					 	newsModel.setImagen(filename);
+					 	newsModel.setImagen(aux);
 						noticiaService.updateNoticia(newsModel);
 						flash.addFlashAttribute("success","Article successfully updated");
 					}

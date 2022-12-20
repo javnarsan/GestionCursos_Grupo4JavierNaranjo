@@ -38,12 +38,13 @@ public class FileSystemStorageService implements StrorageService {
 	@Override
 	public String almacenarArchivo(MultipartFile archivo,String titulo) {
 		String nombreArchivo = titulo+"."+archivo.getOriginalFilename().substring(archivo.getOriginalFilename().lastIndexOf(".") + 1);
+		String aux=nombreArchivo.replace(" ", "_");
 		if(archivo.isEmpty()) {
 			throw new AlmacenExcepcion("No se puede almacenar un archivo vacio");
 		}
 		try {
 			InputStream inputStream  = archivo.getInputStream();
-			Files.copy(inputStream,Paths.get(storageLocation).resolve(nombreArchivo),StandardCopyOption.REPLACE_EXISTING);
+			Files.copy(inputStream,Paths.get(storageLocation).resolve(aux),StandardCopyOption.REPLACE_EXISTING);
 		}catch (IOException excepcion) {
 			throw new AlmacenExcepcion("Error al almacenar el archivo " + nombreArchivo,excepcion);
 		}
