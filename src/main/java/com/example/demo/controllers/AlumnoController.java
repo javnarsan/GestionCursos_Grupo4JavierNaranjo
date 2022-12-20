@@ -24,6 +24,7 @@ import com.example.demo.services.UsuarioService;
 @RequestMapping("/alumno")
 public class AlumnoController {
 	private static final String FORMPERSONAL_VIEW = "formPersonalAlumno";
+	private static final String CURSOS = "cursosAlumno";
 
 	@Autowired
 	@Qualifier("usuarioService")
@@ -35,6 +36,13 @@ public class AlumnoController {
 	    String userEmail = authentication.getName();
 	    model.addAttribute("personal", usuarioService.findUserByEmail(userEmail));
 	    return FORMPERSONAL_VIEW;
+	  }
+	@GetMapping(value = { "/cursos" })
+	  public String cursos(Model model) {
+	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	    String userEmail = authentication.getName();
+	    model.addAttribute("personal", usuarioService.findUserByEmail(userEmail));
+	    return CURSOS;
 	  }
 
 	@PreAuthorize("#personalModel.email==authentication.name")

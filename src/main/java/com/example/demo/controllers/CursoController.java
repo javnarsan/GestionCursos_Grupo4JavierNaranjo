@@ -20,7 +20,7 @@ import com.example.demo.services.CursoService;
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @RequestMapping("/cursos")
 public class CursoController {
-	private static final String CURSOS_VIEW="cursos";
+	private static final String CURSOS_VIEW="cursosAdmin";
 	private static final String FORMCURSO_VIEW="formCurso";
 	
 	@Autowired
