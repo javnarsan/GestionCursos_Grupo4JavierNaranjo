@@ -20,7 +20,7 @@
 			<div class="row">
 			    <div class="col-md-3 my-5" th:each="noticia : ${ultimasNoticias}" th:object="${noticia}">
 			       <a th:href="@{/noticia/{id}(id=*{id})}" class="card shadow-lg" style="text-decoration:none;">
-			       <img th:src="@{/assets/{filename}(filename=*{imagen})}" th:alt="*{titulo}" class="card-img-top">
+			       <img th:src="@{'/assets/' + *{imagen}}" th:alt="*{titulo}" class="card-img-top" />
 			       <div class="card-body">
 			          <h2 class="card-title fs-6" th:text="*{titulo}"></h2>
 			          <p th:text="*{#temporals.format(fechaCreacion,'dd/MM/yyyy')}" class="text-muted small"></p>
