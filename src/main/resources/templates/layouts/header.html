@@ -30,6 +30,7 @@
 				<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="/cursos/listCursos" class="nav-link px-2 link-dark">Cursos</a></li>
 				<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="/news/listNews" class="nav-link px-2 link-dark">Noticias</a></li>
 				<li><a sec:authorize="hasRole('ROLE_ALUMNO')" th:href="@{/alumno/formPersonal}" class="nav-link px-2 link-dark">Editar perfil de alumno</a></li>
+				<li><a sec:authorize="hasRole('ROLE_ALUMNO')" th:href="@{/alumno/cursos}" class="nav-link px-2 link-dark">Ver cursos</a></li>
 				<li><a sec:authorize="hasRole('ROLE_PROFESOR')" th:href="@{/profesor/formPersonal}" class="nav-link px-2 link-dark">Editar perfil de profesor</a></li>
 			</ul>
 

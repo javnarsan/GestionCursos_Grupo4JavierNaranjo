@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/header :: head(~{::title})">
+</head>
+<body>
+	<div class="container" th:replace="layouts/menu :: menu">
+	</div>
+	
+	<div class="container">
+		<div class="Row">
+			<h2>Lista de Cursos</h2>
+		</div>
+		<table class="table table-striped table-bordered">
+			<thead class="thead-light">
+				<tr>
+					<th>Nombre</th>
+					<th>Descripcion</th>
+					<th>Nivel</th>
+					<th>Fecha de inicio</th>
+					<th>Fecha de fin</th>
+					<!-- <th>Profesor</th> -->
+					<th>Disponibilidad</th><!-- Aquí hay que mirar que no esté ya matriculado y que
+					la fecha de inicio sea posterior a la fecha actual. Lo suyo es Un mensajito según 
+					cuál sea el motivo -->
+				</tr>
+			</thead>
+			<tbody th:each="curso: ${cursos}">
+				<tr>
+					<th th:text=${curso.nombre}></th>
+					<th th:text=${curso.descripcion}></th>
+					<th th:text=${curso.nivel}></th>
+					<th th:text="${curso.fechaInicio}"></th>
+					<th th:text="${curso.fechaFin}"></th>
+					<!-- <th th:text=${curso.profesor}></th> --> 
+					<th>
+						<!-- Aquí falta el botón para matricularse, que tiene que estar desactivado si ya lo está -->
+					</th>
+				</tr>
+			</tbody>
+		</table>
+</body>
+</html>
