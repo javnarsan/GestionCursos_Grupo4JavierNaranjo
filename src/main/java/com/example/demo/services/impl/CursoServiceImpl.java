@@ -61,9 +61,9 @@ public class CursoServiceImpl implements CursoService {
 	}
 	
 	@Override
-	public CursoModel findCurso(int id) {
+	public Curso findCurso(int id) {
 		// TODO Auto-generated method stub
-		return transform(cursoRepository.findById(id).orElse(null));
+		return cursoRepository.findById(id).orElse(null);
 	}
 
 

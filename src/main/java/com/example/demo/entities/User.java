@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 public class User {
 	@Id
 	@GeneratedValue
-	private long id;
+	private int id;
 	
 	@Column(name="email",unique=true,nullable=false)
 	@NotNull
@@ -53,7 +53,7 @@ public class User {
 		// TODO Auto-generated constructor stub
 		
 	}
-	public User(long id, String email, String password, boolean enabled, String role, String nombre, String apellidos,
+	public User(int id, String email, String password, boolean enabled, String role, String nombre, String apellidos,
 			String foto, List<Comentario> comentarios, List<Matricula> matriculas, List<Curso> cursosProf,
 			List<Noticia> noticias) {
 		super();
@@ -73,7 +73,7 @@ public class User {
 	public long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getEmail() {

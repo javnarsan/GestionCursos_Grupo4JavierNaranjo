@@ -19,7 +19,7 @@ public class MatriculaServiceImpl implements MatriculaService{
 	@Autowired
 	@Qualifier("matriculaRepository")
 	private MatriculaRepository matriculaRepository;
-	
+	                 
 	
 	@Override
 	public List<MatriculaModel> listAllMatriculas() {
@@ -64,6 +64,11 @@ public class MatriculaServiceImpl implements MatriculaService{
 	public MatriculaModel findMatricula(int id) {
 		// TODO Auto-generated method stub
 		return transform(matriculaRepository.findById(id).orElse(null));
+	}
+
+	@Override
+	public List<MatriculaModel> findMatriculaByUser(long id) {
+		return matriculaRepository.findAll().stream().filter(c->id==c.getAlumnoMat().getId()).map(c->transform(c)).collect(Collectors.toList());
 	}
 
 }

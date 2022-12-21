@@ -15,4 +15,5 @@ public interface MatriculaService {
 	public abstract Matricula transform(MatriculaModel matriculaModel);
 	public abstract MatriculaModel transform(Matricula matricula);
 	public abstract MatriculaModel findMatricula(int id);
+	public abstract List<MatriculaModel> findMatriculaByUser(long id);
 }

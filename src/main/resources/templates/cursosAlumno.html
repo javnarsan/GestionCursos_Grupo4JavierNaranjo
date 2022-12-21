@@ -25,16 +25,20 @@
 				</tr>
 			</thead>
 			<tbody th:each="curso: ${cursos}">
-				<tr>
+				<tr th:each="matricula: ${matriculas}">
 					<th th:text=${curso.nombre}></th>
 					<th th:text=${curso.descripcion}></th>
 					<th th:text=${curso.nivel}></th>
 					<th th:text="${curso.fechaInicio}"></th>
 					<th th:text="${curso.fechaFin}"></th>
 					<!-- <th th:text=${curso.profesor}></th> --> 
-					<th>
-						<!-- Aquí falta el botón para matricularse, que tiene que estar desactivado si ya lo está -->
+					<th th:if="${curso.id != matricula.cursoMat.id}">
+					<form th:action="@{/alumno/addMatricula/}+${curso.id}" method="POST">
+							<button type="submit" class="btn btn-success">Matricularse</button>
+						</form>
 					</th>
+					<th th:if="${curso.id == matricula.cursoMat.id}">
+					<span >Ya estas matriculado</span></th>
 				</tr>
 			</tbody>
 		</table>

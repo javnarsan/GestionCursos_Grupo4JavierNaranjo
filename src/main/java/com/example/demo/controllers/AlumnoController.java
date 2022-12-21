@@ -13,11 +13,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entities.User;
+import com.example.demo.models.MatriculaModel;
 import com.example.demo.models.UserModel;
+import com.example.demo.services.CursoService;
+import com.example.demo.services.MatriculaService;
 import com.example.demo.services.UsuarioService;
+import com.example.demo.services.impl.UserService;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ALUMNO')")
@@ -30,6 +35,14 @@ public class AlumnoController {
 	@Qualifier("usuarioService")
 	private UsuarioService usuarioService;
 	
+	@Autowired
+	@Qualifier("matriculaService")
+	private MatriculaService matriculaService;
+	
+	@Autowired
+	@Qualifier("cursoService")
+	private CursoService cursoService;
+	
 	@GetMapping(value = { "/formPersonal" })
 	  public String formAlumno(Model model) {
 	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -38,12 +51,15 @@ public class AlumnoController {
 	    return FORMPERSONAL_VIEW;
 	  }
 	@GetMapping(value = { "/cursos" })
-	  public String cursos(Model model) {
-	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	    String userEmail = authentication.getName();
-	    model.addAttribute("personal", usuarioService.findUserByEmail(userEmail));
-	    return CURSOS;
-	  }
+	public ModelAndView listCursos() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String userEmail = authentication.getName();
+		ModelAndView mav=new ModelAndView(CURSOS);
+		mav.addObject("titulo", "Cursos disponibles");
+		mav.addObject("cursos",cursoService.listAllCursos());
+		mav.addObject("matriculas",matriculaService.findMatriculaByUser(usuarioService.findUserByEmail(userEmail).getId()));
+		return mav;
+	}
 
 	@PreAuthorize("#personalModel.email==authentication.name")
 	@PostMapping("/addPersonal")
@@ -56,6 +72,15 @@ public class AlumnoController {
 		}
 		return "redirect:/";
 
+	}
+	@PostMapping("/addMatricula/{id}")
+	public String addMatricula(@Valid @ModelAttribute("curso") MatriculaModel matriculaModel,@PathVariable("id") int id,RedirectAttributes flash) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String userEmail = authentication.getName();
+		matriculaModel.setAlumnoMat(usuarioService.findUserByEmail(userEmail));
+		matriculaModel.setCursoMat(cursoService.findCurso(id));
+		matriculaService.addMatricula(matriculaModel);
+		return "redirect:/alumno/cursos";
 	}
 
 }
