@@ -1,6 +1,5 @@
 package com.example.demo.entities;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
