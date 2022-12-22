@@ -25,20 +25,18 @@
 				</tr>
 			</thead>
 			<tbody th:each="curso: ${cursos}">
-				<tr th:each="matricula: ${matriculas}">
+				<tr>
 					<th th:text=${curso.nombre}></th>
 					<th th:text=${curso.descripcion}></th>
 					<th th:text=${curso.nivel}></th>
 					<th th:text="${curso.fechaInicio}"></th>
 					<th th:text="${curso.fechaFin}"></th>
 					<!-- <th th:text=${curso.profesor}></th> --> 
-					<th th:if="${curso.id != matricula.cursoMat.id}">
-					<form th:action="@{/alumno/addMatricula/}+${curso.id}" method="POST">
+					<th>
+					<form th:if="${!#lists.contains(matriculas,curso.id)}" th:action="@{/alumno/addMatricula/}+${curso.id}" method="POST">
 							<button type="submit" class="btn btn-success">Matricularse</button>
 						</form>
-					</th>
-					<th th:if="${curso.id == matricula.cursoMat.id}">
-					<span >Ya estas matriculado</span></th>
+					<span th:unless="${!#lists.contains(matriculas,curso.id)}">Ya estas matriculado</span>
 				</tr>
 			</tbody>
 		</table>

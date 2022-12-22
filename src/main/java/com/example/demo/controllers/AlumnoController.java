@@ -1,4 +1,6 @@
 package com.example.demo.controllers;
+import java.util.ArrayList;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,6 +25,8 @@ import com.example.demo.services.CursoService;
 import com.example.demo.services.MatriculaService;
 import com.example.demo.services.UsuarioService;
 import com.example.demo.services.impl.UserService;
+
+import antlr.collections.List;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ALUMNO')")
@@ -54,10 +58,15 @@ public class AlumnoController {
 	public ModelAndView listCursos() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userEmail = authentication.getName();
+		ArrayList <MatriculaModel> userMatriculas=(ArrayList<MatriculaModel>) matriculaService.findMatriculaByUser(usuarioService.findUserByEmail(userEmail).getId());
+		ArrayList idCursos =new ArrayList<>();
+		for(int i=0;i<userMatriculas.size();i++) {
+			idCursos.add(userMatriculas.get(i).getCursoMat().getId());
+		}
 		ModelAndView mav=new ModelAndView(CURSOS);
 		mav.addObject("titulo", "Cursos disponibles");
 		mav.addObject("cursos",cursoService.listAllCursos());
-		mav.addObject("matriculas",matriculaService.findMatriculaByUser(usuarioService.findUserByEmail(userEmail).getId()));
+		mav.addObject("matriculas",idCursos);
 		return mav;
 	}
 
