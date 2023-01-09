@@ -22,14 +22,14 @@ public class CursoModel {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CursoModel(int id, String nombre, String descripcion, int nivel, User usuario,
+	public CursoModel(int id, String nombre, String descripcion, int nivel, User profesor,
 			Date fechaInicio, Date fechaFin, List<Comentario> comentarios, List<Matricula> matriculas) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.nivel = nivel;
-		this.profesor = usuario;
+		this.profesor = profesor;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.comentarios = comentarios;
@@ -59,11 +59,11 @@ public class CursoModel {
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
-	public User getUsuario() {
+	public User getProfesor() {
 		return profesor;
 	}
-	public void setUsuario(User usuario) {
-		this.profesor = usuario;
+	public void setProfesor(User profesor) {
+		this.profesor = profesor;
 	}
 	public Date getFechaInicio() {
 		return fechaInicio;

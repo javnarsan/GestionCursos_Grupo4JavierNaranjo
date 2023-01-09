@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.models.CursoModel;
 import com.example.demo.services.CursoService;
+import com.example.demo.services.UsuarioService;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -27,6 +28,11 @@ public class CursoController {
 	@Qualifier("cursoService")
 	private CursoService cursoService;
 	
+	@Autowired
+	@Qualifier("usuarioService")
+	private UsuarioService usuarioService;
+	
+	
 	@GetMapping("/listCursos")
 	public ModelAndView listCursos() {
 		ModelAndView mav=new ModelAndView(CURSOS_VIEW);
@@ -37,6 +43,7 @@ public class CursoController {
 	
 	@GetMapping(value= {"/formCurso/","/formCurso/{id}"})
 	public String formCurso(@PathVariable(name="id",required=false) Integer id,Model model) {
+		model.addAttribute("profesores",usuarioService.listAllProfesores());
 		if(id==null) 
 			model.addAttribute("curso",new CursoModel());
 		else 
@@ -47,7 +54,6 @@ public class CursoController {
 	@PostMapping("/addCurso")
 	public String addCurso(@ModelAttribute("curso") CursoModel cursoModel,RedirectAttributes flash) {
 		if(cursoModel.getId()==0) {
-			System.out.println("Fecha que le llega al controlador: "+cursoModel.getFechaInicio());
 			cursoService.addCurso(cursoModel);
 			flash.addFlashAttribute("success","Curso insertado correctamente");
 		}else {
