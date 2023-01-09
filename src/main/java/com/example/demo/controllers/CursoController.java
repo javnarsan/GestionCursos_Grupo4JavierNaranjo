@@ -23,7 +23,7 @@ import com.example.demo.services.UsuarioService;
 public class CursoController {
 	private static final String CURSOS_VIEW="cursosAdmin";
 	private static final String FORMCURSO_VIEW="formCursoAdmin";
-	
+	//
 	@Autowired
 	@Qualifier("cursoService")
 	private CursoService cursoService;
