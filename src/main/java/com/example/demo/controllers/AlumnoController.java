@@ -47,7 +47,7 @@ public class AlumnoController {
 	@Qualifier("cursoService")
 	private CursoService cursoService;
 	
-	@GetMapping(value = { "/formPersonal" })
+	@GetMapping(value = { "/formPersonalAlumno" })
 	  public String formAlumno(Model model) {
 	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	    String userEmail = authentication.getName();

@@ -30,7 +30,7 @@ public class ProfesorController {
 	@Qualifier("usuarioService")
 	private UsuarioService usuarioService;
 	
-	@GetMapping(value = { "/formPersonal" })
+	@GetMapping(value = { "/formPersonalProfesor" })
 	  public String formProfesor(Model model) {
 	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	    String userEmail = authentication.getName();

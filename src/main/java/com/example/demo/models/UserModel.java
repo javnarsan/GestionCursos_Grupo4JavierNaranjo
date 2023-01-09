@@ -1,7 +1,7 @@
 package com.example.demo.models;
 
 public class UserModel {
-	private int id;	
+	private long id;	
 	private String email;
 	private String password;
 	private boolean enabled;
@@ -13,7 +13,7 @@ public class UserModel {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public UserModel(int id, String email, String password, boolean enabled, String role, String nombre,
+	public UserModel(long id, String email, String password, boolean enabled, String role, String nombre,
 			String apellidos, String foto) {
 		super();
 		this.id = id;
@@ -28,7 +28,7 @@ public class UserModel {
 	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getEmail() {
