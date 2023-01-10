@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entities.User;
 import com.example.demo.models.UserModel;
+import com.example.demo.services.CursoService;
 import com.example.demo.services.UsuarioService;
 
 @Controller
@@ -25,10 +26,16 @@ import com.example.demo.services.UsuarioService;
 @RequestMapping("/profesor")
 public class ProfesorController {
 	private static final String FORMPERSONAL_VIEW = "formPersonalProfesor";
-
+	private static final String CURSOSPROF_VIEW = "cursosProfesor";
+	
 	@Autowired
 	@Qualifier("usuarioService")
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	@Qualifier("cursoService")
+	private CursoService cursoService;
+	
 	
 	@GetMapping(value = { "/formPersonalProfesor" })
 	  public String formProfesor(Model model) {
@@ -36,6 +43,17 @@ public class ProfesorController {
 	    String userEmail = authentication.getName();
 	    model.addAttribute("personal", usuarioService.findUserByEmail(userEmail));
 	    return FORMPERSONAL_VIEW;
+	  }
+	@GetMapping(value = { "/cursos" })
+	  public String listCursos(Model model) {
+	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	    String userEmail = authentication.getName();
+	    long idProfesor = usuarioService.findUserByEmail(userEmail).getId();
+	    model.addAttribute("idProf", idProfesor);
+	    var listaFiltrada = cursoService.listAllCursos()
+	    		.stream().filter(x->x.getProfesor().getId()==idProfesor).toList();
+	    model.addAttribute("cursos", listaFiltrada);
+	    return CURSOSPROF_VIEW;
 	  }
 	@PreAuthorize("#personalModel.email==authentication.name")
 	@PostMapping("/addPersonal")

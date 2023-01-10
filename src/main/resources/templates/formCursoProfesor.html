@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="layouts/header :: head(~{::title})">
+		<meta charset="UTF-8">
+<title>Formulario de Curso</title>
+</head>
+	<body>
+		<div class="container">
+		    <div class="row">
+		        <div class="col-md-12">
+		            <div class="well well-sm">
+		                <form class="form-horizontal" th:action="@{/cursos/addCurso}" th:object="${curso}" method="post">
+		                    <fieldset>
+		                        <legend th:text="${curso.id!=0} ? 'Editar Curso' : 'Nuevo Curso'" class="text-center header"></legend>
+								<input type="hidden" th:field="*{id}" id="id"/>
+		                        <div class="form-group">
+		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+		                            <div class="col-md-8">
+		                            	<label for="fname">Nombre</label>
+		                                <input id="fname" th:field="*{nombre}" name="name"  pattern=".{2,40}" required type="text" placeholder="Nombre" class="form-control">
+		                                <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+		                            </div>
+		                        </div>
+		                        <br/>
+		                        <div class="form-group">
+		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+		                            <div class="col-md-8">
+		                            	<label for="descripcion">Descripcion</label>
+		                                <input id="descripcion" th:field="*{descripcion}" name="name" pattern=".{2,100}" required type="text" placeholder="Descripcion" class="form-control">
+		                                <small class="form-text text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></small>
+		                            </div>
+		                        </div>
+								<br/>
+								<div class="form-group">
+		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+		                            <div class="col-md-8">
+		                            	<label for="nivel">Nivel (0-4 Basico / 5-8 Medio / 9-10 Avanzado)</label>
+		                            	<!-- 
+		                                <input id="nivel" th:field="*{nivel}" name="name" type="number" placeholder="nivel" class="form-control">
+		                                <small class="form-text text-danger" th:if="${#fields.hasErrors('nivel')}" th:errors="*{nivel}"></small> -->
+		                                <select th:field="*{nivel}" class="form-control">
+		                                	<option value="0">0</option>
+		                                	<option value="1">1</option>
+											<option value="2">2</option>
+		                                	<option value="3">3</option>
+		                                	<option value="4">4</option>
+		                                	<option value="5">5</option>
+		                                	<option value="6">6</option>
+		                                	<option value="7">7</option>
+		                                	<option value="8">8</option>
+		                                	<option value="9">9</option>
+		                                	<option value="10">10</option>
+		                                </select>
+		                            </div>
+		                        </div>
+								<br/>
+								<div class="form-group">
+		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+		                            <div class="col-md-8">
+		                            	<label for="fechaInicio">Fecha de inicio</label>
+		                                <input id="fechaInicio" type="date" th:field="*{fechaInicio}" name="fechaInicio" class="form-control">
+		                                <!-- <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></small> -->
+		                            </div>
+		                        </div>
+								<br/>
+								<div class="form-group">
+		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+		                            <div class="col-md-8">
+		                            	<label for="fechaFin">Fecha de fin</label>
+		                                <input id="fechaFin" type="date" th:field="*{fechaFin}" name="fechaFin" class="form-control">
+		                                <!--<small class="form-text text-danger" th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}"></small> -->
+		                            </div>
+		                        </div>
+								<br/>
+								<div class="alert alert-success" th:if="${success!=null}" th:text="${success}"></div>
+		                        <div class="form-group">
+		                            <div class="col-md-12 text-center">
+		                                <button type="submit" class="btn btn-primary btn-lg">Aceptar</button>
+		                            </div>
+		                        </div>
+		                    </fieldset>
+		                </form>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<script>
+			document.querySelector('form').addEventListener('submit', function(event) {
+			  var select = document.querySelector('#idProfesor');
+			  if (select.value === 'placeholder') {
+			    event.preventDefault();
+			    alert('Debes seleccionar un profesor');
+			  }
+			});
+
+		</script>
+	</body>
+</html>
