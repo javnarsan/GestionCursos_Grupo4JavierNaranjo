@@ -18,7 +18,7 @@
 					<th>Nivel</th>
 					<th>Fecha de inicio</th>
 					<th>Fecha de fin</th>
-					<!-- <th>Profesor</th> -->
+					<th>Profesor</th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
@@ -27,9 +27,9 @@
 					<th th:text=${curso.nombre}></th>
 					<th th:text=${curso.descripcion}></th>
 					<th th:text=${curso.nivel}></th>
-					<th th:text="${curso.fechaInicio}"></th>
-					<th th:text="${curso.fechaFin}"></th>
-					<!-- <th th:text=${curso.profesor}></th> --> 
+					<th th:text="${#dates.format(curso.fechaInicio, 'dd/MM/yyyy')}"></th>
+					<th th:text="${#dates.format(curso.fechaFin, 'dd/MM/yyyy')}"></th>
+					<th th:text=${curso.profesor.nombre}></th>
 					<th><a th:href="@{/cursos/formCurso/}+${curso.id}">
 							<button type="button" class="btn btn-primary">Edit</button>
 						</a>

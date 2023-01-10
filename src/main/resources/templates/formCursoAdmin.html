@@ -34,9 +34,23 @@
 								<div class="form-group">
 		                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
 		                            <div class="col-md-8">
-		                            	<label for="nivel">Nivel</label>
+		                            	<label for="nivel">Nivel (0-4 Basico / 5-8 Medio / 9-10 Avanzado)</label>
+		                            	<!-- 
 		                                <input id="nivel" th:field="*{nivel}" name="name" type="number" placeholder="nivel" class="form-control">
-		                                <small class="form-text text-danger" th:if="${#fields.hasErrors('nivel')}" th:errors="*{nivel}"></small>
+		                                <small class="form-text text-danger" th:if="${#fields.hasErrors('nivel')}" th:errors="*{nivel}"></small> -->
+		                                <select th:field="*{nivel}" class="form-control">
+		                                	<option value="0">0</option>
+		                                	<option value="1">1</option>
+											<option value="2">2</option>
+		                                	<option value="3">3</option>
+		                                	<option value="4">4</option>
+		                                	<option value="5">5</option>
+		                                	<option value="6">6</option>
+		                                	<option value="7">7</option>
+		                                	<option value="8">8</option>
+		                                	<option value="9">9</option>
+		                                	<option value="10">10</option>
+		                                </select>
 		                            </div>
 		                        </div>
 								<br/>
@@ -65,7 +79,7 @@
 		                            	<br/>
 		                                <!--<input id="nivel" th:field="*{profesor}" name="name" type="number" placeholder="Profesor" class="form-control">
 		                                <small class="form-text text-danger" th:if="${#fields.hasErrors('nivel')}" th:errors="*{nivel}"></small>-->
-		                                <select id="select" th:field="*{profesor}" class="form-control">
+		                                <select id="idProfesor" name="idProfesor" class="form-control">
 		                                	<option value="placeholder" selected hidden>Selecciona un profesor</option>
 								            <option th:each="prof : ${profesores}"
 								                    th:text="${prof.nombre}"
@@ -89,10 +103,10 @@
 		</div>
 		<script>
 			document.querySelector('form').addEventListener('submit', function(event) {
-			  var select = document.querySelector('#select');
+			  var select = document.querySelector('#idProfesor');
 			  if (select.value === 'placeholder') {
 			    event.preventDefault();
-			    alert('Debes seleccionar una opción');
+			    alert('Debes seleccionar un profesor');
 			  }
 			});
 

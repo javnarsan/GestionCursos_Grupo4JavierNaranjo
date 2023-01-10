@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.models.CursoModel;
+import com.example.demo.models.UserModel;
 import com.example.demo.services.CursoService;
 import com.example.demo.services.UsuarioService;
 
@@ -37,7 +39,7 @@ public class CursoController {
 	public ModelAndView listCursos() {
 		ModelAndView mav=new ModelAndView(CURSOS_VIEW);
 		mav.addObject("titulo", "Control Cursos");
-		mav.addObject(CURSOS_VIEW,cursoService.listAllCursos());
+		mav.addObject("cursos",cursoService.listAllCursos());
 		return mav;
 	}
 	
@@ -52,7 +54,8 @@ public class CursoController {
 	}
 	
 	@PostMapping("/addCurso")
-	public String addCurso(@ModelAttribute("curso") CursoModel cursoModel,RedirectAttributes flash) {
+	public String addCurso(@ModelAttribute("curso") CursoModel cursoModel,@RequestParam("idProfesor") long idProfesor,RedirectAttributes flash) {
+		cursoModel.setProfesor(usuarioService.findUserById(idProfesor));
 		if(cursoModel.getId()==0) {
 			cursoService.addCurso(cursoModel);
 			flash.addFlashAttribute("success","Curso insertado correctamente");
